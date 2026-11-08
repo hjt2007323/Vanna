@@ -1,0 +1,6 @@
+database : C:\Users\Asus\AppData\Local\Temp\g1-demo-zy9hjqmt\shop.db
+read_only: True
+sql      : DELETE FROM products
+
+error    : DatabaseError: not authorized
+note     : read-only mode refuses writes at the SQLite level

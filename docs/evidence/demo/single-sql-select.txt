@@ -1,0 +1,8 @@
+database : C:\Users\Asus\AppData\Local\Temp\g1-demo-v5lg5ls7\shop.db
+read_only: False
+sql      : SELECT id, name FROM products ORDER BY id
+
+2 rows, columns=['id', 'name']
+ id   name
+  1  apple
+  2 banana

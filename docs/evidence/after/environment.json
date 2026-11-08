@@ -1,0 +1,16 @@
+{
+  "generated_at": "20261107T133323Z",
+  "python": "3.14.6 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:29:05) [MSC v.1942 64 bit (AMD64)]",
+  "executable": "D:\\Codex\\Projects\\github-upgrades\\vanna-sqlite-maintenance\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "sqlite_library": "3.53.2",
+  "project_root": "D:\\Codex\\Projects\\github-upgrades\\vanna-sqlite-maintenance",
+  "baseline_file": "D:\\Codex\\Projects\\github-upgrades\\vanna-sqlite-maintenance\\baseline\\upstream_sql_runner.py",
+  "baseline_sha256": "830dd109940121c871af4f9a6c16950f36e70a92745a224bca4152e448681ca6",
+  "candidate_module": "vanna.integrations.sqlite.sql_runner",
+  "work_root": "C:\\Users\\Asus\\AppData\\Local\\Temp\\g1-reproduce-8t_chg5j",
+  "keep_workdir": false,
+  "candidate_file": "D:\\Codex\\Projects\\github-upgrades\\vanna-sqlite-maintenance\\src\\vanna\\integrations\\sqlite\\sql_runner.py",
+  "candidate_sha256": "645c5f5c963a6d0a9af9270469bf90863b13123d1ed09047e1b47a0e3e3cb532",
+  "candidate_runner": "vanna.integrations.sqlite.sql_runner.SqliteRunner"
+}

@@ -1,0 +1,9 @@
+=== ruff check (src + tests + tools) ===
+All checks passed!
+
+check exit: 0
+=== ruff format --check (src + tests + tools) ===
+7 files already formatted
+
+format exit: 0
+ruff version: ruff 0.17.4

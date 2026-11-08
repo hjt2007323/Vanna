@@ -1,0 +1,119 @@
+G1 Vanna SQLite maintenance demo
+========================================================================
+project : D:\Codex\Projects\github-upgrades\vanna-sqlite-maintenance
+python  : 3.14.6  sqlite: 3.53.2
+workdir : C:\Users\Asus\AppData\Local\Temp\g1-demo-vdht77yz  (synthetic fixture, removed at the end)
+
+[1/14] normal read (control): ordinary SELECT keeps working
+  SQL      : SELECT id, name, price FROM products ORDER BY id
+  result   : 2 rows, columns=['id', 'name', 'price']
+ id   name  price
+  1  apple    1.5
+  2 banana    0.5
+  upstream : 2 rows, columns=['id', 'name', 'price']
+  verdict  : same as upstream
+
+[2/14] query compatibility: a leading comment must not hide the result set
+  SQL      : -- dashboard query
+SELECT id, name FROM products ORDER BY id
+  result   : 2 rows, columns=['id', 'name']
+ id   name
+  1  apple
+  2 banana
+  upstream : write accepted, rows_affected=-1
+  verdict  : FIXED: upstream behaviour was wrong for this input
+
+[3/14] query compatibility: CTE followed by SELECT
+  SQL      : WITH cheap AS (SELECT id, name FROM products WHERE price < 1) SELECT id, name FROM cheap ORDER BY id
+  result   : 1 rows, columns=['id', 'name']
+ id   name
+  2 banana
+  upstream : write accepted, rows_affected=-1
+  verdict  : FIXED: upstream behaviour was wrong for this input
+
+[4/14] query compatibility: VALUES is a result-set statement
+  SQL      : VALUES (1, 'alpha'), (2, 'beta')
+  result   : 2 rows, columns=['column1', 'column2']
+ column1 column2
+       1   alpha
+       2    beta
+  upstream : write accepted, rows_affected=-1
+  verdict  : FIXED: upstream behaviour was wrong for this input
+
+[5/14] empty result: 0 rows must keep the requested columns
+  SQL      : SELECT id, name FROM products WHERE id < 0
+  result   : 0 rows, columns=['id', 'name']
+  upstream : 0 rows, columns=[]
+  verdict  : FIXED: upstream behaviour was wrong for this input
+
+[6/14] default write: default mode still writes and commits
+  SQL      : INSERT INTO products (name, price) VALUES ('cherry', 2.25)
+  result   : write accepted, rows_affected=1
+  upstream : write accepted, rows_affected=1
+  reconnect: SELECT COUNT(*) FROM products -> 3 (expected 3)
+  verdict  : same as upstream
+
+[7/14] RETURNING: RETURNING rows are returned and committed
+  SQL      : INSERT INTO products (name, price) VALUES ('date', 3.0) RETURNING id, name
+  result   : 1 rows, columns=['id', 'name']
+ id name
+  3 date
+  upstream : OperationalError: cannot commit transaction - SQL statements in progress
+  reconnect: SELECT COUNT(*) FROM products WHERE name = 'date' -> 1 (expected 1)
+  verdict  : FIXED: upstream behaviour was wrong for this input
+
+[8/14] read-only mode: read_only=True refuses writes through the database engine
+  SQL      : INSERT INTO products (name) VALUES ('hack')
+  result   : DatabaseError: not authorized
+  upstream : unsupported: TypeError (upstream has no read_only parameter)
+  file     : unchanged=True new_files=none
+  verdict  : NEW: upstream cannot do this at all
+
+[9/14] read-only mode: a SELECT keyword check would miss this write
+  SQL      : WITH doomed AS (SELECT id FROM products) DELETE FROM products WHERE id IN (SELECT id FROM doomed)
+  result   : DatabaseError: not authorized
+  upstream : unsupported: TypeError (upstream has no read_only parameter)
+  file     : unchanged=True new_files=none
+  verdict  : NEW: upstream cannot do this at all
+
+[10/14] read-only mode: ATTACH cannot be used to write around the read-only mode
+  SQL      : ATTACH DATABASE 'C:/Users/Asus/AppData/Local/Temp/g1-demo-vdht77yz/after/demo_10_readonly_attach/attached-escape.db' AS side_db
+  result   : DatabaseError: not authorized
+  upstream : unsupported: TypeError (upstream has no read_only parameter)
+  file     : unchanged=True new_files=none
+  verdict  : NEW: upstream cannot do this at all
+
+[11/14] read-only mode: write-capable PRAGMAs are refused
+  SQL      : PRAGMA user_version = 7
+  result   : DatabaseError: not authorized
+  upstream : unsupported: TypeError (upstream has no read_only parameter)
+  file     : unchanged=True new_files=none
+  reconnect: PRAGMA user_version -> 0 (expected 0)
+  verdict  : NEW: upstream cannot do this at all
+
+[12/14] read-only mode: a missing database is reported and never created
+  SQL      : SELECT 1
+  result   : FileNotFoundError: read-only SQLite database does not exist: C:\Users\Asus\AppData\Local\Temp\g1-demo-vdht77yz\after\demo_12_readonly_missing_db\shop.db (read_only=True never creates a database)
+  upstream : unsupported: TypeError (upstream has no read_only parameter)
+  file     : unchanged=True new_files=none
+  verdict  : NEW: upstream cannot do this at all
+
+[13/14] path handling: space, '#' and unicode in the path are URI-encoded
+  SQL      : SELECT id, name FROM products ORDER BY id
+  result   : 2 rows, columns=['id', 'name']
+ id   name
+  1  apple
+  2 banana
+  upstream : 2 rows, columns=['id', 'name']
+  verdict  : same as upstream
+
+[14/14] lifecycle: after an error the connection is closed and the file can be deleted
+  SQL      : SELECT * FROM table_that_does_not_exist
+  result   : OperationalError: no such table: table_that_does_not_exist
+  upstream : OperationalError: no such table: table_that_does_not_exist
+  cleanup  : database file deletable after the error: True
+  verdict  : same as upstream
+
+------------------------------------------------------------------------
+steps: 14  failures: 0  fixed vs upstream: 10
+cleanup: files created=24 removed=True

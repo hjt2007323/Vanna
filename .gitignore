@@ -26,3 +26,9 @@ frontends/**/static/
 frontends/**/.storybook-static/
 frontends/**/package-lock.json
 frontends/**/.mypy_cache/
+
+# G1 maintenance branch: local virtualenv and tool caches (not part of the source candidate)
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/

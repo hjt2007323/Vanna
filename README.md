@@ -6,6 +6,12 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+> **Maintenance branch (G1): SQLite runner compatibility + optional read-only mode.**
+> This checkout is based on upstream commit `365d0617c1a4567ffee1b19b40c27feb4206bfcf` (MIT) and changes
+> only `src/vanna/integrations/sqlite/sql_runner.py` plus new tests/tooling. Provenance and file
+> fingerprints are in [`UPSTREAM.md`](UPSTREAM.md); the change, before/after evidence and limits are in
+> [`docs/G1-交付.md`](docs/G1-交付.md) (Chinese). One-command reproduction: `python tools/reproduce_g1.py`.
+
 https://github.com/user-attachments/assets/476cd421-d0b0-46af-8b29-0f40c73d6d83
 
 

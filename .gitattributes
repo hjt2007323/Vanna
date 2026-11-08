@@ -1,1 +1,11 @@
 *.ipynb linguist-detectable=false
+
+# Hash-verified artifacts must check out byte-identically on every machine.
+# A system-wide core.autocrlf=true would otherwise turn LF into CRLF on
+# checkout, making baseline/upstream_sql_runner.py (and every manifest hash)
+# mismatch the frozen SHA256.  This rule wins over user/global config.
+* text=auto eol=lf
+
+# Two upstream files ship with CRLF inside the commit archive; keep their
+# bytes exactly as downloaded so the "unmodified upstream" claim stays true.
+.github/ISSUE_TEMPLATE/*.md -text

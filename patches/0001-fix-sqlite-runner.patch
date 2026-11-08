@@ -1,0 +1,685 @@
+From 95dd9e2c8d5980ea2f85724f9989b4afaf3a8c8f Mon Sep 17 00:00:00 2001
+From: G1 maintenance <g1-maintenance@example.invalid>
+Date: Sat, 7 Nov 2026 21:23:55 +0800
+Subject: [PATCH] fix(sqlite): detect result sets from cursor.description, keep
+ empty columns, commit RETURNING
+
+run_sql classified statements by the first SQL token, so a leading comment,
+WITH ... SELECT and VALUES fell into the write branch: rows were dropped and
+rows_affected=-1 was returned.  A SELECT with no rows returned pd.DataFrame()
+and lost the requested columns.  INSERT/UPDATE ... RETURNING crashed with
+'cannot commit transaction - SQL statements in progress' because commit ran
+while the result set was still pending.
+
+The fix uses cursor.description to decide whether a statement produced a
+result set, builds the DataFrame positionally from the cursor columns (so
+duplicate column names survive), commits after consuming RETURNING rows, and
+keeps the rows_affected contract for statements without a result set.
+
+Adds an opt-in read_only=False parameter.  read_only=True opens the existing
+file through a percent-encoded mode=ro URI, sets PRAGMA query_only and
+installs a SQLite authorizer that refuses writes, ATTACH/DETACH, DDL and
+write-capable PRAGMAs; a missing database is reported instead of created.
+Default behaviour is unchanged.
+
+Tests: real temporary SQLite databases, no mocks (tests/test_sqlite_runner_maintenance.py).
+---
+ src/vanna/integrations/sqlite/sql_runner.py | 196 +++++++++-
+ tests/test_sqlite_runner_maintenance.py     | 401 ++++++++++++++++++++
+ 2 files changed, 576 insertions(+), 21 deletions(-)
+ create mode 100644 tests/test_sqlite_runner_maintenance.py
+
+diff --git a/src/vanna/integrations/sqlite/sql_runner.py b/src/vanna/integrations/sqlite/sql_runner.py
+index 034d4d1..4ea07fc 100644
+--- a/src/vanna/integrations/sqlite/sql_runner.py
++++ b/src/vanna/integrations/sqlite/sql_runner.py
+@@ -1,64 +1,218 @@
+ """SQLite implementation of SqlRunner interface."""
+ 
++from __future__ import annotations
++
+ import sqlite3
++from pathlib import Path
++from typing import Any, Optional
++
+ import pandas as pd
+ 
+ from vanna.capabilities.sql_runner import SqlRunner, RunSqlToolArgs
+ from vanna.core.tool import ToolContext
+ 
++#: PRAGMAs that only read schema/connection metadata.  They are the only
++#: PRAGMAs accepted on a read-only connection.  PRAGMAs that can change
++#: schema, files or persistent settings (``user_version``, ``journal_mode``,
++#: ``writable_schema``, ``optimize``, ...) are refused.
++_READ_ONLY_PRAGMAS = frozenset(
++    {
++        "collation_list",
++        "compile_options",
++        "database_list",
++        "foreign_key_check",
++        "foreign_key_list",
++        "freelist_count",
++        "index_info",
++        "index_list",
++        "index_xinfo",
++        "integrity_check",
++        "page_count",
++        "page_size",
++        "quick_check",
++        "schema_version",
++        "table_info",
++        "table_list",
++        "table_xinfo",
++    }
++)
++
++
++def _denied_authorizer_actions() -> frozenset[int]:
++    """Return the SQLite authorizer actions refused on a read-only connection.
++
++    The authorizer is the statement-level guard; ``mode=ro`` and
++    ``PRAGMA query_only`` are the connection- and database-level guards.  All
++    three are used together so that read-only mode never depends on inspecting
++    SQL keywords.
++    """
++
++    names = (
++        "SQLITE_ALTER_TABLE",
++        "SQLITE_ANALYZE",
++        "SQLITE_ATTACH",
++        "SQLITE_CREATE_INDEX",
++        "SQLITE_CREATE_TABLE",
++        "SQLITE_CREATE_TEMP_INDEX",
++        "SQLITE_CREATE_TEMP_TABLE",
++        "SQLITE_CREATE_TEMP_TRIGGER",
++        "SQLITE_CREATE_TEMP_VIEW",
++        "SQLITE_CREATE_TRIGGER",
++        "SQLITE_CREATE_VTABLE",
++        "SQLITE_CREATE_VIEW",
++        "SQLITE_DELETE",
++        "SQLITE_DETACH",
++        "SQLITE_DROP_INDEX",
++        "SQLITE_DROP_TABLE",
++        "SQLITE_DROP_TEMP_INDEX",
++        "SQLITE_DROP_TEMP_TABLE",
++        "SQLITE_DROP_TEMP_TRIGGER",
++        "SQLITE_DROP_TEMP_VIEW",
++        "SQLITE_DROP_TRIGGER",
++        "SQLITE_DROP_VIEW",
++        "SQLITE_DROP_VTABLE",
++        "SQLITE_INSERT",
++        "SQLITE_REINDEX",
++        "SQLITE_UPDATE",
++    )
++    return frozenset(getattr(sqlite3, name) for name in names if hasattr(sqlite3, name))
++
++
++_DENIED_ACTIONS = _denied_authorizer_actions()
++
+ 
+ class SqliteRunner(SqlRunner):
+     """SQLite implementation of the SqlRunner interface."""
+ 
+-    def __init__(self, database_path: str):
++    def __init__(self, database_path: str, read_only: bool = False):
+         """Initialize with a SQLite database path.
+ 
+         Args:
+             database_path: Path to the SQLite database file
++            read_only: When ``True`` the file is opened with a ``mode=ro``
++                URI, ``PRAGMA query_only`` and an authorizer that refuses
++                writes, ``ATTACH``/``DETACH`` and write-capable PRAGMAs.
++                The database file must already exist; it is never created.
++                Defaults to ``False``, preserving the upstream read/write
++                behaviour.
+         """
+         self.database_path = database_path
++        self.read_only = read_only
++
++    def _connect(self) -> sqlite3.Connection:
++        """Open the connection, applying the read-only guards when requested."""
++
++        if not self.read_only:
++            conn = sqlite3.connect(self.database_path)
++            conn.row_factory = sqlite3.Row  # Enable column access by name
++            return conn
++
++        if str(self.database_path) == ":memory:":
++            raise ValueError(
++                "read_only=True requires a file-backed SQLite database; "
++                "':memory:' cannot be opened read-only"
++            )
++
++        path = Path(self.database_path).expanduser()
++        if not path.exists():
++            raise FileNotFoundError(
++                f"read-only SQLite database does not exist: {path} "
++                "(read_only=True never creates a database)"
++            )
++
++        # Path.as_uri() percent-encodes spaces, '#' and non-ASCII characters,
++        # so the '?mode=ro' query string cannot be truncated by the path.
++        uri = f"{path.resolve().as_uri()}?mode=ro"
++        conn = sqlite3.connect(uri, uri=True)
++        conn.row_factory = sqlite3.Row
++
++        # Connection-level guard: the engine itself refuses write statements,
++        # including writes hidden in CTEs or triggers.
++        conn.execute("PRAGMA query_only = ON")
++
++        # Statement-level guard: available from Python 3.11.  Older runtimes
++        # keep mode=ro + query_only only, which is recorded in the docs.
++        set_authorizer = getattr(conn, "set_authorizer", None)
++        if set_authorizer is not None:
++            set_authorizer(self._authorize)
++        return conn
++
++    @staticmethod
++    def _authorize(
++        action: int,
++        arg1: Optional[str],
++        arg2: Optional[str],
++        dbname: Optional[str],
++        source: Optional[str],
++    ) -> int:
++        """Authorizer callback used by read-only connections."""
++
++        if action in _DENIED_ACTIONS:
++            return sqlite3.SQLITE_DENY
++        if action == sqlite3.SQLITE_PRAGMA:
++            if (arg1 or "").lower() in _READ_ONLY_PRAGMAS:
++                return sqlite3.SQLITE_OK
++            return sqlite3.SQLITE_DENY
++        return sqlite3.SQLITE_OK
+ 
+     async def run_sql(self, args: RunSqlToolArgs, context: ToolContext) -> pd.DataFrame:
+         """Execute SQL query against SQLite database and return results as DataFrame.
+ 
++        Result sets are detected from ``cursor.description`` instead of the
++        first SQL keyword, so leading comments, ``WITH`` and ``VALUES``
++        statements keep their rows.  A statement that both returns rows and
++        modifies data (``RETURNING``) is committed after its rows are consumed,
++        so closing the connection cannot roll the change back.
++
+         Args:
+             args: SQL query arguments
+             context: Tool execution context
+ 
+         Returns:
+-            DataFrame with query results
++            DataFrame with query results, or ``rows_affected`` for statements
++            that do not return a result set
+ 
+         Raises:
++            ValueError: If the SQL statement is empty
++            FileNotFoundError: If ``read_only=True`` and the database is missing
+             sqlite3.Error: If query execution fails
+         """
++        if not args.sql or not args.sql.strip():
++            raise ValueError("SQL statement must not be empty")
++
+         # Connect to the database
+-        conn = sqlite3.connect(self.database_path)
+-        conn.row_factory = sqlite3.Row  # Enable column access by name
++        conn = self._connect()
+         cursor = conn.cursor()
+ 
+         try:
+             # Execute the query
+             cursor.execute(args.sql)
+ 
+-            # Determine if this is a SELECT query or modification query
+-            query_type = args.sql.strip().upper().split()[0]
+-
+-            if query_type == "SELECT":
+-                # Fetch results for SELECT queries
++            if cursor.description is not None:
++                # Any statement with a result set (SELECT, WITH ... SELECT,
++                # VALUES, INSERT/UPDATE/DELETE ... RETURNING, row-returning
++                # PRAGMAs) is treated as a result-set query.
++                columns = [column[0] for column in cursor.description]
+                 rows = cursor.fetchall()
++
++                # RETURNING opens a write transaction.  Commit only after the
++                # result set has been consumed, otherwise SQLite refuses with
++                # "cannot commit transaction - SQL statements in progress".
++                if conn.in_transaction:
++                    conn.commit()
++
+                 if not rows:
+-                    # Return empty DataFrame
+-                    return pd.DataFrame()
+-
+-                # Convert rows to list of dictionaries
+-                results_data = [dict(row) for row in rows]
+-                return pd.DataFrame(results_data)
+-            else:
+-                # For non-SELECT queries (INSERT, UPDATE, DELETE, etc.)
+-                conn.commit()
+-                rows_affected = cursor.rowcount
+-                # Return a DataFrame indicating rows affected
+-                return pd.DataFrame({"rows_affected": [rows_affected]})
++                    # Keep the requested columns for empty results.
++                    return pd.DataFrame([], columns=columns)
++
++                # Build positionally so duplicate column names are not merged.
++                return pd.DataFrame([tuple(row) for row in rows], columns=columns)
++
++            # For non-result statements (INSERT, UPDATE, DELETE, DDL, etc.)
++            conn.commit()
++            rows_affected = cursor.rowcount
++            # Return a DataFrame indicating rows affected
++            return pd.DataFrame({"rows_affected": [rows_affected]})
+ 
+         finally:
+             cursor.close()
+diff --git a/tests/test_sqlite_runner_maintenance.py b/tests/test_sqlite_runner_maintenance.py
+new file mode 100644
+index 0000000..8dd2c0d
+--- /dev/null
++++ b/tests/test_sqlite_runner_maintenance.py
+@@ -0,0 +1,401 @@
++"""Regression tests for the maintained Vanna SQLite runner.
++
++Every test talks to a real, temporary SQLite database created with the
++standard library; nothing is mocked and no SQL is rewritten before it reaches
++:class:`SqliteRunner`.  The tests cover the upstream compatibility problem
++(result sets classified by the first SQL keyword), the empty-result column
++loss, the ``RETURNING`` commit failure, and the optional read-only mode.
++"""
++
++from __future__ import annotations
++
++import asyncio
++import hashlib
++import inspect
++import sqlite3
++from pathlib import Path
++
++import pandas as pd
++import pytest
++
++from vanna.capabilities.sql_runner import RunSqlToolArgs
++from vanna.integrations.sqlite import SqliteRunner
++
++SEED_SQL = """\
++CREATE TABLE products (
++    id INTEGER PRIMARY KEY,
++    name TEXT NOT NULL,
++    price REAL
++);
++INSERT INTO products (name, price) VALUES ('apple', 1.5), ('banana', 0.5);
++CREATE INDEX idx_products_name ON products(name);
++CREATE TABLE empty_table (
++    id INTEGER PRIMARY KEY,
++    note TEXT
++);
++"""
++
++
++def _run(runner: SqliteRunner, sql: str) -> pd.DataFrame:
++    return asyncio.run(runner.run_sql(RunSqlToolArgs(sql=sql), None))
++
++
++def _sha256(path: Path) -> str:
++    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
++
++
++def _scalar(path: Path, sql: str):
++    """Read a single value with an explicitly closed connection."""
++
++    conn = sqlite3.connect(str(path))
++    try:
++        row = conn.execute(sql).fetchone()
++        return None if row is None else row[0]
++    finally:
++        conn.close()
++
++
++@pytest.fixture()
++def db_path(tmp_path: Path) -> Path:
++    path = tmp_path / "shop.db"
++    conn = sqlite3.connect(str(path))
++    try:
++        conn.executescript(SEED_SQL)
++        conn.commit()
++    finally:
++        conn.close()
++    return path
++
++
++# ---------------------------------------------------------------------------
++# compatibility of the original constructor and contract
++# ---------------------------------------------------------------------------
++
++
++def test_constructor_default_parameters_are_compatible(db_path: Path) -> None:
++    runner = SqliteRunner(str(db_path))
++    assert runner.database_path == str(db_path)
++    assert runner.read_only is False
++
++    parameters = inspect.signature(SqliteRunner.__init__).parameters
++    assert list(parameters) == ["self", "database_path", "read_only"]
++    assert parameters["read_only"].default is False
++
++
++def test_run_sql_is_async() -> None:
++    assert inspect.iscoroutinefunction(SqliteRunner.run_sql)
++
++
++def test_plain_select_returns_rows_and_columns(db_path: Path) -> None:
++    frame = _run(
++        SqliteRunner(str(db_path)), "SELECT id, name, price FROM products ORDER BY id"
++    )
++    assert frame.shape == (2, 3)
++    assert list(frame.columns) == ["id", "name", "price"]
++    assert frame["name"].tolist() == ["apple", "banana"]
++
++
++def test_leading_comment_select_returns_rows(db_path: Path) -> None:
++    sql = "-- a leading comment\nSELECT id, name FROM products ORDER BY id"
++    frame = _run(SqliteRunner(str(db_path)), sql)
++    assert frame.shape == (2, 2)
++    assert list(frame.columns) == ["id", "name"]
++
++
++def test_with_select_returns_rows(db_path: Path) -> None:
++    sql = (
++        "WITH cheap AS (SELECT id, name FROM products WHERE price < 1) "
++        "SELECT id, name FROM cheap ORDER BY id"
++    )
++    frame = _run(SqliteRunner(str(db_path)), sql)
++    assert frame.shape == (1, 2)
++    assert frame.iloc[0]["name"] == "banana"
++
++
++def test_values_returns_rows(db_path: Path) -> None:
++    frame = _run(SqliteRunner(str(db_path)), "VALUES (1, 'alpha'), (2, 'beta')")
++    assert frame.shape == (2, 2)
++    assert list(frame.columns) == ["column1", "column2"]
++    assert frame["column1"].tolist() == [1, 2]
++
++
++def test_empty_result_keeps_columns_and_order(db_path: Path) -> None:
++    frame = _run(
++        SqliteRunner(str(db_path)),
++        "SELECT id, name FROM products WHERE id < 0",
++    )
++    assert frame.shape == (0, 2)
++    assert list(frame.columns) == ["id", "name"]
++
++
++def test_empty_table_keeps_columns(db_path: Path) -> None:
++    frame = _run(
++        SqliteRunner(str(db_path)), "SELECT id, note FROM empty_table ORDER BY id"
++    )
++    assert frame.shape == (0, 2)
++    assert list(frame.columns) == ["id", "note"]
++
++
++def test_duplicate_column_names_are_preserved(db_path: Path) -> None:
++    frame = _run(
++        SqliteRunner(str(db_path)),
++        "SELECT id AS k, name AS k FROM products ORDER BY id LIMIT 1",
++    )
++    assert frame.shape == (1, 2)
++    assert list(frame.columns) == ["k", "k"]
++    assert frame.iloc[0].tolist() == [1, "apple"]
++
++
++def test_row_returning_pragma_in_default_mode(db_path: Path) -> None:
++    frame = _run(SqliteRunner(str(db_path)), "PRAGMA table_info(products)")
++    assert frame.shape == (3, 6)
++    assert list(frame.columns) == ["cid", "name", "type", "notnull", "dflt_value", "pk"]
++
++
++# ---------------------------------------------------------------------------
++# default read/write behaviour must stay intact
++# ---------------------------------------------------------------------------
++
++
++def test_default_insert_commits_and_reconnect_sees_row(db_path: Path) -> None:
++    frame = _run(
++        SqliteRunner(str(db_path)),
++        "INSERT INTO products (name, price) VALUES ('cherry', 2.25)",
++    )
++    assert list(frame.columns) == ["rows_affected"]
++    assert frame.iloc[0, 0] == 1
++    assert _scalar(db_path, "SELECT COUNT(*) FROM products") == 3
++    assert _scalar(db_path, "SELECT price FROM products WHERE name = 'cherry'") == 2.25
++
++
++def test_default_update_commits(db_path: Path) -> None:
++    frame = _run(
++        SqliteRunner(str(db_path)),
++        "UPDATE products SET price = price + 1 WHERE name = 'apple'",
++    )
++    assert frame.iloc[0, 0] == 1
++    assert _scalar(db_path, "SELECT price FROM products WHERE name = 'apple'") == 2.5
++
++
++def test_delete_reports_rows_affected(db_path: Path) -> None:
++    frame = _run(SqliteRunner(str(db_path)), "DELETE FROM products WHERE id = 1")
++    assert list(frame.columns) == ["rows_affected"]
++    assert frame.iloc[0, 0] == 1
++    assert _scalar(db_path, "SELECT COUNT(*) FROM products") == 1
++
++
++def test_insert_returning_returns_rows_and_commits(db_path: Path) -> None:
++    frame = _run(
++        SqliteRunner(str(db_path)),
++        "INSERT INTO products (name, price) VALUES ('date', 3.0) RETURNING id, name",
++    )
++    assert frame.shape == (1, 2)
++    assert list(frame.columns) == ["id", "name"]
++    assert frame.iloc[0]["name"] == "date"
++    assert _scalar(db_path, "SELECT COUNT(*) FROM products WHERE name = 'date'") == 1
++
++
++def test_update_returning_multiple_rows_and_commit(db_path: Path) -> None:
++    frame = _run(
++        SqliteRunner(str(db_path)),
++        "UPDATE products SET price = price + 10 RETURNING id, price",
++    )
++    assert frame.shape == (2, 2)
++    assert list(frame.columns) == ["id", "price"]
++    assert sorted(frame["price"].tolist()) == [10.5, 11.5]
++    assert _scalar(db_path, "SELECT price FROM products WHERE name = 'apple'") == 11.5
++
++
++def test_returning_with_no_matching_rows_keeps_columns(db_path: Path) -> None:
++    frame = _run(
++        SqliteRunner(str(db_path)),
++        "UPDATE products SET price = 0 WHERE id = -999 RETURNING id",
++    )
++    assert frame.shape == (0, 1)
++    assert list(frame.columns) == ["id"]
++    assert _scalar(db_path, "SELECT COUNT(*) FROM products WHERE price = 0") == 0
++
++
++# ---------------------------------------------------------------------------
++# optional read-only mode: database-level refusal, not keyword matching
++# ---------------------------------------------------------------------------
++
++
++def test_read_only_select_works_and_file_is_unchanged(db_path: Path) -> None:
++    before = _sha256(db_path)
++    frame = _run(
++        SqliteRunner(str(db_path), read_only=True),
++        "SELECT id, name FROM products ORDER BY id",
++    )
++    assert frame.shape == (2, 2)
++    assert _sha256(db_path) == before
++
++
++@pytest.mark.parametrize(
++    "sql",
++    [
++        "INSERT INTO products (name) VALUES ('hack')",
++        "UPDATE products SET name = 'hack'",
++        "DELETE FROM products",
++        "WITH doomed AS (SELECT id FROM products) DELETE FROM products "
++        "WHERE id IN (SELECT id FROM doomed)",
++        "CREATE TABLE hack (id INTEGER)",
++        "DROP TABLE products",
++        "PRAGMA user_version = 7",
++        "PRAGMA journal_mode = WAL",
++        "REINDEX idx_products_name",
++        "ANALYZE",
++        "CREATE TEMP TABLE hack (id INTEGER)",
++    ],
++)
++def test_read_only_rejects_writes(db_path: Path, sql: str) -> None:
++    before = _sha256(db_path)
++    with pytest.raises(sqlite3.DatabaseError):
++        _run(SqliteRunner(str(db_path), read_only=True), sql)
++    assert _sha256(db_path) == before
++    assert _scalar(db_path, "SELECT COUNT(*) FROM products") == 2
++
++
++def test_read_only_rejects_attach_and_creates_no_file(
++    db_path: Path, tmp_path: Path
++) -> None:
++    escape = tmp_path / "attached-escape.db"
++    with pytest.raises(sqlite3.DatabaseError):
++        _run(
++            SqliteRunner(str(db_path), read_only=True),
++            f"ATTACH DATABASE '{escape.as_posix()}' AS side_db",
++        )
++    assert not escape.exists()
++
++
++def test_read_only_rejects_vacuum_into(db_path: Path, tmp_path: Path) -> None:
++    copy = tmp_path / "vacuum-copy.db"
++    with pytest.raises(sqlite3.DatabaseError):
++        _run(
++            SqliteRunner(str(db_path), read_only=True),
++            f"VACUUM INTO '{copy.as_posix()}'",
++        )
++    assert not copy.exists()
++
++
++def test_read_only_rejects_load_extension(db_path: Path, tmp_path: Path) -> None:
++    with pytest.raises(sqlite3.Error):
++        _run(
++            SqliteRunner(str(db_path), read_only=True),
++            f"SELECT load_extension('{(tmp_path / 'evil.dll').as_posix()}')",
++        )
++
++
++def test_read_only_allows_metadata_pragma(db_path: Path) -> None:
++    frame = _run(
++        SqliteRunner(str(db_path), read_only=True),
++        "PRAGMA table_info(products)",
++    )
++    assert frame.shape == (3, 6)
++    assert list(frame.columns) == ["cid", "name", "type", "notnull", "dflt_value", "pk"]
++
++
++def test_read_only_write_pragma_does_not_change_value(db_path: Path) -> None:
++    with pytest.raises(sqlite3.DatabaseError):
++        _run(SqliteRunner(str(db_path), read_only=True), "PRAGMA user_version = 7")
++    assert _scalar(db_path, "PRAGMA user_version") == 0
++
++
++def test_read_only_missing_database_is_not_created(tmp_path: Path) -> None:
++    missing = tmp_path / "does-not-exist.db"
++    with pytest.raises(FileNotFoundError):
++        _run(SqliteRunner(str(missing), read_only=True), "SELECT 1")
++    assert not missing.exists()
++
++
++def test_read_only_memory_database_is_rejected() -> None:
++    with pytest.raises(ValueError):
++        _run(SqliteRunner(":memory:", read_only=True), "SELECT 1")
++
++
++def test_read_only_failed_write_does_not_poison_later_reads(db_path: Path) -> None:
++    runner = SqliteRunner(str(db_path), read_only=True)
++    with pytest.raises(sqlite3.DatabaseError):
++        _run(runner, "DELETE FROM products")
++    frame = _run(runner, "SELECT COUNT(*) AS n FROM products")
++    assert frame.iloc[0]["n"] == 2
++
++
++# ---------------------------------------------------------------------------
++# paths, lifecycle and error feedback
++# ---------------------------------------------------------------------------
++
++
++@pytest.mark.parametrize("read_only", [False, True])
++def test_path_with_spaces_hash_and_unicode(tmp_path: Path, read_only: bool) -> None:
++    folder = tmp_path / "data dir 数据"
++    folder.mkdir()
++    path = folder / "shop #1 100%.db"
++    conn = sqlite3.connect(str(path))
++    try:
++        conn.executescript(SEED_SQL)
++        conn.commit()
++    finally:
++        conn.close()
++
++    frame = _run(
++        SqliteRunner(str(path), read_only=read_only),
++        "SELECT id, name FROM products ORDER BY id",
++    )
++    assert frame.shape == (2, 2)
++    assert list(frame.columns) == ["id", "name"]
++
++
++def test_read_only_accepts_relative_path(
++    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
++) -> None:
++    conn = sqlite3.connect(str(tmp_path / "shop.db"))
++    try:
++        conn.executescript(SEED_SQL)
++        conn.commit()
++    finally:
++        conn.close()
++    monkeypatch.chdir(tmp_path)
++    frame = _run(
++        SqliteRunner("shop.db", read_only=True), "SELECT COUNT(*) AS n FROM products"
++    )
++    assert frame.iloc[0]["n"] == 2
++
++
++def test_connection_released_after_query_error(tmp_path: Path) -> None:
++    path = tmp_path / "lifecycle.db"
++    conn = sqlite3.connect(str(path))
++    try:
++        conn.executescript(SEED_SQL)
++        conn.commit()
++    finally:
++        conn.close()
++
++    with pytest.raises(sqlite3.OperationalError):
++        _run(SqliteRunner(str(path)), "SELECT * FROM table_that_does_not_exist")
++    path.unlink()  # succeeds only when no handle is still open
++    assert not path.exists()
++
++
++def test_connection_released_after_read_only_refusal(tmp_path: Path) -> None:
++    path = tmp_path / "lifecycle-ro.db"
++    conn = sqlite3.connect(str(path))
++    try:
++        conn.executescript(SEED_SQL)
++        conn.commit()
++    finally:
++        conn.close()
++
++    with pytest.raises(sqlite3.DatabaseError):
++        _run(
++            SqliteRunner(str(path), read_only=True),
++            "INSERT INTO products (name) VALUES ('x')",
++        )
++    path.unlink()
++    assert not path.exists()
++
++
++@pytest.mark.parametrize("sql", ["", "   ", "\n\t "])
++def test_empty_sql_raises_value_error(db_path: Path, sql: str) -> None:
++    with pytest.raises(ValueError, match="must not be empty"):
++        _run(SqliteRunner(str(db_path)), sql)
+-- 
+2.55.0.windows.1
+
