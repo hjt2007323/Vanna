@@ -1,11 +1,11 @@
 {
-  "generated_at": "20261107T133407Z",
+  "generated_at": "20261107T141655Z",
   "project_root": "D:\\Codex\\Projects\\github-upgrades\\vanna-sqlite-maintenance",
-  "git_head": "1a64d98d5ae98d5a8d30a46f74649002f89dc69c",
-  "git_head_short": "1a64d98",
+  "git_head": "e8930554cff6c7708978c188cd5a2612b3f80c35",
+  "git_head_short": "e893055",
   "git_status_excluding_manifest": [],
   "entry_count": 411,
-  "total_bytes": 6512882,
+  "total_bytes": 6517218,
   "entries": [
     {
       "path": ".gitattributes",
@@ -169,13 +169,13 @@
     },
     {
       "path": "docs/G1-交付.md",
-      "bytes": 26622,
-      "sha256": "4a276f96117033443120c8ba111d80350f914c915907869b54c1dfa6a95dc146"
+      "bytes": 28649,
+      "sha256": "00476d4affacd6003038e2e6d630594d4027cdefa4e9444c2faf762567e81e76"
     },
     {
       "path": "docs/G1-面试材料.md",
-      "bytes": 6105,
-      "sha256": "4f25897032cc77002468d398d707fc076852737f421fca4de048a2ab2ba5a3df"
+      "bytes": 7720,
+      "sha256": "f8c8c9a6e676878d3ce86f1d3121fa80e8132488089ed8ea0cf3f2722a10c808"
     },
     {
       "path": "examples/chromadb_gpu_example.py",
@@ -499,8 +499,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 10083,
-      "sha256": "7401c2ce43f9012db8f2fc2e549a0c6f7cd302f432389ccabc1676562023e743"
+      "bytes": 10777,
+      "sha256": "15380c592e26d8beaac8410c7df359cc98fee9ef227494452195367d26a1fc31"
     },
     {
       "path": "README_LEGACY.md",
