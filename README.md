@@ -11,6 +11,14 @@
 > only `src/vanna/integrations/sqlite/sql_runner.py` plus new tests/tooling. Provenance and file
 > fingerprints are in [`UPSTREAM.md`](UPSTREAM.md); the change, before/after evidence and limits are in
 > [`docs/G1-交付.md`](docs/G1-交付.md) (Chinese). One-command reproduction: `python tools/reproduce_g1.py`.
+>
+> **Read-only mode is opt-in.** `SqliteRunner(path, read_only=True)` opens an *existing* file through a
+> percent-encoded `mode=ro` URI, sets `PRAGMA query_only`, and installs an authorizer that refuses
+> writes, `ATTACH`/`DETACH`, DDL and write-capable PRAGMAs. **Only schema/metadata PRAGMAs are allowed**
+> (`table_info`, `table_xinfo`, `table_list`, `index_*`, `foreign_key_*`, `database_list`,
+> `integrity_check`, ...) — this is an explicit allowlist, not "all PRAGMAs are blocked", and it is not
+> "all PRAGMAs are open" either. A missing database raises `FileNotFoundError` and is never created.
+> `read_only` defaults to `False`, so the upstream read/write behaviour is unchanged.
 
 https://github.com/user-attachments/assets/476cd421-d0b0-46af-8b29-0f40c73d6d83
 
