@@ -1,0 +1,68 @@
+{
+  "schema_version": "component-source-history-v1",
+  "date": "2026-11-08",
+  "repository": "hjt2007323/Vanna",
+  "upstream": {
+    "url": "https://github.com/vanna-ai/vanna",
+    "sha": "365d0617c1a4567ffee1b19b40c27feb4206bfcf"
+  },
+  "initial_remote_head": "878919c3396f7b5d53fde772d4e7cd02d2ffb352",
+  "local_publication_head": "0a799c4eb72184675e6f57b4afaa49eb761af494",
+  "notice": "Remote commits were recreated through the connected GitHub API; every imported source snapshot retains its exact Git tree. Local and remote commit IDs differ.",
+  "snapshots": [
+    {
+      "local_sha": "a236cc96cc125271675831a61b96266328edb39e",
+      "remote_sha": "a5d83462ce850f54aa51340fe65fde7536c23370",
+      "tree_sha": "ab80756aaaae27fae85cde75c2e8ba344e083282",
+      "message": "vendor: unpack vanna at 365d0617c1a4567ffee1b19b40c27feb4206bfcf\n\nUpstream tree unpacked from the codeload archive (no .git in the archive).\ngit clone/ls-remote fail on this machine, so local commit hashes are not\nupstream hashes. LICENSE kept byte-identical (MIT, Vanna.AI)."
+    },
+    {
+      "local_sha": "95dd9e2c8d5980ea2f85724f9989b4afaf3a8c8f",
+      "remote_sha": "4093ab7a5f4fd7436186eb1900d659594b0435f0",
+      "tree_sha": "d4de3ffd9646b907a95fdb5e8b2778205987ab7d",
+      "message": "fix(sqlite): detect result sets from cursor.description, keep empty columns, commit RETURNING\n\nrun_sql classified statements by the first SQL token, so a leading comment,\nWITH ... SELECT and VALUES fell into the write branch: rows were dropped and\nrows_affected=-1 was returned.  A SELECT with no rows returned pd.DataFrame()\nand lost the requested columns.  INSERT/UPDATE ... RETURNING crashed with\n'cannot commit transaction - SQL statements in progress' because commit ran\nwhile the result set was still pending.\n\nThe fix uses cursor.description to decide whether a statement produced a\nresult set, builds the DataFrame positionally from the cursor columns (so\nduplicate column names survive), commits after consuming RETURNING rows, and\nkeeps the rows_affected contract for statements without a result set.\n\nAdds an opt-in read_only=False parameter.  read_only=True opens the existing\nfile through a percent-encoded mode=ro URI, sets PRAGMA query_only and\ninstalls a SQLite authorizer that refuses writes, ATTACH/DETACH, DDL and\nwrite-capable PRAGMAs; a missing database is reported instead of created.\nDefault behaviour is unchanged.\n\nTests: real temporary SQLite databases, no mocks (tests/test_sqlite_runner_maintenance.py)."
+    },
+    {
+      "local_sha": "1a64d98d5ae98d5a8d30a46f74649002f89dc69c",
+      "remote_sha": "0291db4723958bf44f2172c15639d919804e03b1",
+      "tree_sha": "37dd67d71c6da3c4ceb65f73ab4da0acbbcc0226",
+      "message": "docs: delivery report, upstream provenance, reproducer, demo and evidence\n\n- docs/G1-交付.md: what/why/diff, 29-case before/after, tests, limits, 6 answers\n- docs/G1-面试材料.md: one-page story and a 3-minute demo script\n- UPSTREAM.md: codeload archive URL/SHA256, frozen baseline hash, local history caveat\n- tools/: probe cases, reproduce_g1.py, demo_g1.py, baseline loader, manifest writer\n  (read-only probes also require the error to look like a refusal, so a SQL\n  syntax error cannot be counted as a blocked write)\n- baseline/upstream_sql_runner.py: byte-identical upstream copy for comparison\n- docs/evidence/: raw baseline / after / paired comparison / tests / demo data,\n  generated with LF line endings so its SHA256 survives a clone\n- .gitattributes: pin text=auto eol=lf and keep the two upstream CRLF files\n  untouched; a system-level autocrlf turned a clean clone into CRLF and broke\n  the frozen baseline hash (caught by a clean-room clone test)\n- requirements-lock.txt, README maintenance note, patches/0001-fix-sqlite-runner.patch"
+    },
+    {
+      "local_sha": "907d76e2f59322daaafda807184406daf250fe48",
+      "remote_sha": "dcfebc661e2547ef1b27a9040c3facb76e270687",
+      "tree_sha": "3e244c2598497acf1d9c2c4e550e8ee7d6065848",
+      "message": "docs: add artifact manifest (path, size, SHA256) for the delivered tree"
+    },
+    {
+      "local_sha": "e8930554cff6c7708978c188cd5a2612b3f80c35",
+      "remote_sha": "d845904fbc7e2fb00aed5ccc5adff32124aa2cb2",
+      "tree_sha": "38a957ed4212c9746ea0182841c2f603b35b9b6f",
+      "message": "docs: record R1 acceptance and put the read-only PRAGMA policy in the README\n\n- R1 (2026-11-07) accepted with no blocking defects; the delivery report now\n  records the reviewed HEAD/source SHA, the scope and the unverified items.\n- README: the read-only mode note now states that only schema/metadata PRAGMAs\n  are allowed (allowlist), so users do not read it as 'all PRAGMAs blocked' or\n  'all PRAGMAs open' (R1 non-blocking suggestion #2).\n- Interview notes: add one bounded resume bullet (CN/EN) matching the accepted\n  scope, with an explicit 'do not claim' list.\n\nDocs-only: src/vanna/integrations/sqlite/sql_runner.py is unchanged\n(sha256 645c5f5c...), so the R1 acceptance is inherited per its section 5."
+    },
+    {
+      "local_sha": "de12f4e04df98fac735c00a949bf8338dff8fa18",
+      "remote_sha": "9f2857f5df5ae0398b25f6971c38779c5b5ddff9",
+      "tree_sha": "168179d67da03b1eb425c3bc911cfeaa4bb44ad5",
+      "message": "docs: refresh artifact manifest after the R1 follow-up (docs only)"
+    },
+    {
+      "local_sha": "d75387cd2cfd13e05411cdcda8138af68b1902a5",
+      "remote_sha": "183394621dc59bf4a87748eee8cf79fb80871ca4",
+      "tree_sha": "088939a7cc95b8848778a26928d993a6878c2ccb",
+      "message": "docs: point the delivery report at the r1-accepted tag"
+    },
+    {
+      "local_sha": "e0993a6c0877d4896701dab2c716243ef8cb1286",
+      "remote_sha": "c999cb642b34cdb47b0d0c90ddbea114da00e2af",
+      "tree_sha": "c7aeeb30430e683bc2c5fa755727a2787ad364ee",
+      "message": "docs: refresh artifact manifest after the tag note"
+    },
+    {
+      "local_sha": "0a799c4eb72184675e6f57b4afaa49eb761af494",
+      "remote_sha": "fe320b9db60f053ce34fbce341530779c5998ff0",
+      "tree_sha": "e287bbfc0df556cb6381f433ef224a2e4f072158",
+      "message": "docs: prepare attributed component portfolio publication"
+    }
+  ]
+}

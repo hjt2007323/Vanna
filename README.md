@@ -47,3 +47,5 @@ python tools/demo_g1.py
 - [一键对照](tools/reproduce_g1.py)
 
 原 MIT 许可与 Vanna.AI 版权保留于 [LICENSE](LICENSE)。上游自动发布及整包工作流归档于 `.github/upstream-workflows/`，个人展示版不触发上游发行任务。本轮没有修改产品源码。
+
+[本次改进的版本与提交映射](SOURCE-HISTORY.md)
