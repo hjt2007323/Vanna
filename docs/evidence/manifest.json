@@ -1,11 +1,11 @@
 {
-  "generated_at": "20261107T141655Z",
+  "generated_at": "20261107T141745Z",
   "project_root": "D:\\Codex\\Projects\\github-upgrades\\vanna-sqlite-maintenance",
-  "git_head": "e8930554cff6c7708978c188cd5a2612b3f80c35",
-  "git_head_short": "e893055",
+  "git_head": "d75387cd2cfd13e05411cdcda8138af68b1902a5",
+  "git_head_short": "d75387c",
   "git_status_excluding_manifest": [],
   "entry_count": 411,
-  "total_bytes": 6517218,
+  "total_bytes": 6517279,
   "entries": [
     {
       "path": ".gitattributes",
@@ -169,8 +169,8 @@
     },
     {
       "path": "docs/G1-交付.md",
-      "bytes": 28649,
-      "sha256": "00476d4affacd6003038e2e6d630594d4027cdefa4e9444c2faf762567e81e76"
+      "bytes": 28710,
+      "sha256": "8fb3a5ceb5f2c5e2b901861c0c594503370c6f5e2198d827f3e7ccb0e4cc3476"
     },
     {
       "path": "docs/G1-面试材料.md",
