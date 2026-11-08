@@ -1,0 +1,2066 @@
+{
+  "generated_at": "20261107T133407Z",
+  "project_root": "D:\\Codex\\Projects\\github-upgrades\\vanna-sqlite-maintenance",
+  "git_head": "1a64d98d5ae98d5a8d30a46f74649002f89dc69c",
+  "git_head_short": "1a64d98",
+  "git_status_excluding_manifest": [],
+  "entry_count": 411,
+  "total_bytes": 6512882,
+  "entries": [
+    {
+      "path": ".gitattributes",
+      "bytes": 536,
+      "sha256": "52db1114ab1fb2eb495b92813e21ed26c7502b462998a34f67e1d4b07f14042d"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "bytes": 746,
+      "sha256": "0d83162e738f122d6164cdf08681c9cc4eed72b50fb27b9e2a20d62f98b2b908"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "bytes": 629,
+      "sha256": "4719d1f805b6c7d0523d77f73f54bb27f58f0554500b7d4801e666d797539f68"
+    },
+    {
+      "path": ".github/workflows/python-publish.yaml",
+      "bytes": 1083,
+      "sha256": "be93a6e393cd7f615efc2af02c26b4c541557dbdc219eed0a957f838a3404003"
+    },
+    {
+      "path": ".github/workflows/tests.yml",
+      "bytes": 965,
+      "sha256": "e2d7ea89a0ead3fcec0b2eacd8a7ae351920afb8366b69f9de9e19dab231af08"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 537,
+      "sha256": "d2b8b1e12e815a925a017dfa52747d6553b7becca368a24945583c10b1c9c396"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "bytes": 493,
+      "sha256": "f03d5413aa4d4f0e4b1d8a365d37284196488fe6f00c534f279533b455a76872"
+    },
+    {
+      "path": "baseline/upstream_sql_runner.py",
+      "bytes": 2118,
+      "sha256": "830dd109940121c871af4f9a6c16950f36e70a92745a224bca4152e448681ca6"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 11057,
+      "sha256": "c80b6cdb6ba2b443d18584a109d2304c243724ea17a09a9dc5072ca72a7d9d10"
+    },
+    {
+      "path": "docs/evidence/after/after.json",
+      "bytes": 26446,
+      "sha256": "3e4af9e187ef42a69667838c934a9be29d2f794df6df6b64271eb1f8d717f619"
+    },
+    {
+      "path": "docs/evidence/after/cleanup.json",
+      "bytes": 178,
+      "sha256": "3dec4d9e115bf20b94353c4a62559531e3e864bb38050e101cca36b7953226e6"
+    },
+    {
+      "path": "docs/evidence/after/environment.json",
+      "bytes": 1092,
+      "sha256": "c227c1bec2729d5e2568a1274dda38e270219af71cc8100b298bdba879cb3830"
+    },
+    {
+      "path": "docs/evidence/after/summary.md",
+      "bytes": 2696,
+      "sha256": "dc7c51e4849739da2541d1feb9c3ecf4a815eab21ed6bae9a58e0141173c6ca7"
+    },
+    {
+      "path": "docs/evidence/baseline/baseline.json",
+      "bytes": 27823,
+      "sha256": "813e7bbb23ced030bedb5d10915b5897b5eb3d5ec43e553232245cb8e8e6b6ad"
+    },
+    {
+      "path": "docs/evidence/baseline/cleanup.json",
+      "bytes": 178,
+      "sha256": "7e0b0820ebf72c4c9c1a840c2878d87db0e0fdcdcff1582e3a24d1339f84d41b"
+    },
+    {
+      "path": "docs/evidence/baseline/environment.json",
+      "bytes": 852,
+      "sha256": "105c1e7842bfebebe4e7439c47989c4b231b009bd33af7d5324afbbe1389da4e"
+    },
+    {
+      "path": "docs/evidence/baseline/summary.md",
+      "bytes": 2357,
+      "sha256": "05b7f47e5977949f90dfe276b35f9f93f4ff359c9169ab5b72d1188fa62adce5"
+    },
+    {
+      "path": "docs/evidence/comparison/after.json",
+      "bytes": 26446,
+      "sha256": "1d6dde733d6034a897876df2c9a9de9982fa1291cd1a212c8be70ab9abf7e537"
+    },
+    {
+      "path": "docs/evidence/comparison/baseline.json",
+      "bytes": 27820,
+      "sha256": "9cf68bcfd63290b33b6f0371b65e96344c32c336f4cf2c209ee4553172e40996"
+    },
+    {
+      "path": "docs/evidence/comparison/cleanup.json",
+      "bytes": 178,
+      "sha256": "ed0a0ad3569b08fd5b957333657115ca2aea0db1f62cdc3dd750eec343879db4"
+    },
+    {
+      "path": "docs/evidence/comparison/comparison.csv",
+      "bytes": 5029,
+      "sha256": "46d28c780270ba9d2febce539cc89d6aa3585704afa74da368df9c4990e199a0"
+    },
+    {
+      "path": "docs/evidence/comparison/comparison.json",
+      "bytes": 12116,
+      "sha256": "12836989274620fde629cf3bb5fe68fa94fa2d4dbe8d28f47d16790eb7c30da7"
+    },
+    {
+      "path": "docs/evidence/comparison/environment.json",
+      "bytes": 1152,
+      "sha256": "b9740f0a00babe88be1e28c738da8dfbbd5e4d5d7c63b4e52679dbf5906794b0"
+    },
+    {
+      "path": "docs/evidence/comparison/summary.md",
+      "bytes": 4033,
+      "sha256": "7f8a2a78e3dd710f37ced1818e39b1349cbb350082c493471a895703646ec11c"
+    },
+    {
+      "path": "docs/evidence/demo/guided-demo.txt",
+      "bytes": 5444,
+      "sha256": "d6cc8ec4ef718a7b2d6a59028b7bb9ef3b6a2a70b3d1c0beb2d5f6e13dfada44"
+    },
+    {
+      "path": "docs/evidence/demo/single-sql-readonly-refused.txt",
+      "bytes": 220,
+      "sha256": "58cbc9fa53a1bde2fc843137e2c91c13b3ebd14c1bc4fc251699106566212bc2"
+    },
+    {
+      "path": "docs/evidence/demo/single-sql-select.txt",
+      "bytes": 204,
+      "sha256": "0f4aac3183fc611501d55fe359d646c9dda1cb06240e5323ad13b53d023cb847"
+    },
+    {
+      "path": "docs/evidence/environment-pip-freeze.txt",
+      "bytes": 694,
+      "sha256": "3d6f1511b010e665803df23becb3fb22c59cc4861e8862b4fec44efc225ff884"
+    },
+    {
+      "path": "docs/evidence/environment.txt",
+      "bytes": 374,
+      "sha256": "d8a9dcd5e7fb70b1c7b8eb9f7144afd17685f407d4f658a7e1c0f6fcdcd2be7b"
+    },
+    {
+      "path": "docs/evidence/tests/new-regression.txt",
+      "bytes": 4698,
+      "sha256": "72c90f2531a5306307a0cbbdeeef5bb7d006239dda6b5a18da419fd7896dab48"
+    },
+    {
+      "path": "docs/evidence/tests/ruff.txt",
+      "bytes": 193,
+      "sha256": "9488c9bc9e50fdc338f28801a6f36244351c547375e548a4f46c6853e445b8f4"
+    },
+    {
+      "path": "docs/evidence/tests/upstream-sqlite-subset.txt",
+      "bytes": 925,
+      "sha256": "50d6bddc078f3fa25487000ba885eecdd138d2543283a8443d1d34f879912f11"
+    },
+    {
+      "path": "docs/G1-交付.md",
+      "bytes": 26622,
+      "sha256": "4a276f96117033443120c8ba111d80350f914c915907869b54c1dfa6a95dc146"
+    },
+    {
+      "path": "docs/G1-面试材料.md",
+      "bytes": 6105,
+      "sha256": "4f25897032cc77002468d398d707fc076852737f421fca4de048a2ab2ba5a3df"
+    },
+    {
+      "path": "examples/chromadb_gpu_example.py",
+      "bytes": 4142,
+      "sha256": "bd8c5f7ed15f3d97d4dda439a1ef56aee14cb3fc1609987313ba0ca8a6002dfc"
+    },
+    {
+      "path": "examples/transform_args_example.py",
+      "bytes": 5250,
+      "sha256": "d0cd5fba7fefd573f1d817305854eff8a97b13adeb79da0ca920e6327d9a45ce"
+    },
+    {
+      "path": "frontends/webcomponent/.storybook/main.ts",
+      "bytes": 685,
+      "sha256": "b4b4de96de2b201da5042bfeef4262f23892ffbd1272d01f2fdf565c128e4fbe"
+    },
+    {
+      "path": "frontends/webcomponent/.storybook/preview-head.html",
+      "bytes": 328,
+      "sha256": "d4b69e2bd8197c8f76edde5746a708b35d269d245a4b321ddd67a4eda987807c"
+    },
+    {
+      "path": "frontends/webcomponent/.storybook/preview.ts",
+      "bytes": 289,
+      "sha256": "9a305a9639d0a1a8878ccd7720f3093eeaf361bbbd11553c52783293a50a5820"
+    },
+    {
+      "path": "frontends/webcomponent/package.json",
+      "bytes": 1495,
+      "sha256": "1c1af7fe410728fa55503b613023aef4ad160e6476f04247498db2d31492f708"
+    },
+    {
+      "path": "frontends/webcomponent/requirements-test.txt",
+      "bytes": 255,
+      "sha256": "158ca555ac122491efd9746b5c8c71256d5ce7fd5c4c09f3baab420b16c01f9b"
+    },
+    {
+      "path": "frontends/webcomponent/scripts/sync-version.js",
+      "bytes": 1724,
+      "sha256": "54249978474b5c4b847b95552c0d62352d1798be9bb0955760c675b1bc690c5e"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/button.stories.ts",
+      "bytes": 15139,
+      "sha256": "1c5a4283a83ac2f30a2e8f176f3303d75c5d4184167c43d8c532c8c377e9d096"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/dataframe-component.stories.ts",
+      "bytes": 19876,
+      "sha256": "3aa84b73f67bcb169bec7d58f894c60455481e2787d9d576935126572969aa49"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/plotly-chart.stories.ts",
+      "bytes": 6516,
+      "sha256": "0203e727ed9d76a01cd59efbc7366b7614a3d192aca473c62d5f57c0dd459ade"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/plotly-chart.ts",
+      "bytes": 5218,
+      "sha256": "d7eb00af02a159e422ee9cc26c3dc5aedc44276656a3fe71db8d9c754a088290"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/rich-card.stories.ts",
+      "bytes": 4921,
+      "sha256": "11f74b80744a8c73bb3b2334358a53984bb593a869cfec9d2c106d85acdba93f"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/rich-card.ts",
+      "bytes": 8820,
+      "sha256": "e2ed3374b21f8a085c09fc95cfe3b88b9eeb76a77f287b06f758acc09928c94c"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/rich-component-system.stories.ts",
+      "bytes": 11365,
+      "sha256": "13d72a84f4aa150c90d6dfad17b7b88e23392e990cfcb8008588cb24256df377"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/rich-component-system.ts",
+      "bytes": 70943,
+      "sha256": "8a28361dc0a8431dd5bf580a61a8c2af7246dc3ed86dbd5480a3c82b44e1799a"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/rich-progress-bar.stories.ts",
+      "bytes": 6442,
+      "sha256": "441e228852b5bab67694a7e5be6d47fd5052301ced8ac4596fe1b9eadbc890e9"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/rich-progress-bar.ts",
+      "bytes": 5442,
+      "sha256": "27bceff9d811f1a027307238e8038fd8f501045b72b787fa264ddbb224dd9548"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/rich-task-list.stories.ts",
+      "bytes": 6889,
+      "sha256": "e0182bd03563a72c9577bd202cb7cec1ae7607d388890996b33a20c3f2594853"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/rich-task-list.ts",
+      "bytes": 7338,
+      "sha256": "79625c21092264e2c54d0130f96fe600777747876d81942656ed5f5ab166fcdb"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/vanna-chat.stories.ts",
+      "bytes": 43341,
+      "sha256": "bf298b97541a5ff10e7cd4e37d9d5f5fe0304876def7385fb6731ae10aaa368c"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/vanna-chat.ts",
+      "bytes": 44436,
+      "sha256": "be9ff7a2038fb181cac481840118b3ecbeeb797e5c379c1c3ed4cbd70745f41f"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/vanna-message.stories.ts",
+      "bytes": 2725,
+      "sha256": "05252e67a2831a6126395e4e727cc2d5ca7a5dda0acf8a8b73a0f56ac6d04555"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/vanna-message.ts",
+      "bytes": 6467,
+      "sha256": "1a72d6c63f1efe30e4fdd1a04e12d73b6fa3e78376df805a1f43520ea3b12c46"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/vanna-progress-tracker.stories.ts",
+      "bytes": 9037,
+      "sha256": "b443a37af5ff237c94f67aa173842a59b7b978e2f5d0ec5900c85f2c73cffbc1"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/vanna-progress-tracker.ts",
+      "bytes": 7309,
+      "sha256": "6a7995ce289f2d89c3ff3653b2e7c31b4870d02c5fe351660d0636c1f4246e28"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/vanna-status-bar.stories.ts",
+      "bytes": 4420,
+      "sha256": "0d7a2b3c9065e30e343c5ee4c2e77ba2ac4b435e27db87fda2c7b4ca0ea2fc7e"
+    },
+    {
+      "path": "frontends/webcomponent/src/components/vanna-status-bar.ts",
+      "bytes": 13100,
+      "sha256": "1780cac1796b55103a1368c1c600bb3b8938df9dd2452adf5a6981c733e270fb"
+    },
+    {
+      "path": "frontends/webcomponent/src/index.ts",
+      "bytes": 1210,
+      "sha256": "e97a47eb1b488d271570baff8a00295c032aa063331658a2c086c9fc875e7cf9"
+    },
+    {
+      "path": "frontends/webcomponent/src/services/api-client.ts",
+      "bytes": 8394,
+      "sha256": "a275b5c59c2618ec88de7e8bf75a816c6c75db5c37d6e60e01572e3aead49f2a"
+    },
+    {
+      "path": "frontends/webcomponent/src/styles/rich-component-styles.ts",
+      "bytes": 41059,
+      "sha256": "f8b696fa521a207a7e1dd93eb88389734d98d0f0efd9cdc483dd01d92320939e"
+    },
+    {
+      "path": "frontends/webcomponent/src/styles/vanna-design-tokens.ts",
+      "bytes": 6049,
+      "sha256": "61d32bbfcac26bafc40ab5240e36f5b93f7f1df024798e23c9c9dddda48c0bcb"
+    },
+    {
+      "path": "frontends/webcomponent/src/vite-env.d.ts",
+      "bytes": 118,
+      "sha256": "aa20ef0aadb5f57e463a66fd9a4916cd3669f3819413e93558ebf20c84bcc7c5"
+    },
+    {
+      "path": "frontends/webcomponent/test-comprehensive.html",
+      "bytes": 19109,
+      "sha256": "879eadaf31f33456a6e34b0b3b29ca77fe06824dde3157a2e1c1c1551fb0751a"
+    },
+    {
+      "path": "frontends/webcomponent/test_backend.py",
+      "bytes": 29189,
+      "sha256": "6a09aa88e8568c821e1df4892e8804631e67ebfb6c1f243fcc1131fcc96e8c94"
+    },
+    {
+      "path": "frontends/webcomponent/TEST_README.md",
+      "bytes": 11658,
+      "sha256": "38224078e4367f0894fd1dcb21a915826e15a0b6c016e1489cbac29da0e7f9e6"
+    },
+    {
+      "path": "frontends/webcomponent/tsconfig.json",
+      "bytes": 520,
+      "sha256": "b2251c5e2932cbbc754d5953560169c2d988e38af8db98844314349d6f43d498"
+    },
+    {
+      "path": "frontends/webcomponent/vite.config.ts",
+      "bytes": 554,
+      "sha256": "1eb51995ee4f19e550b87a22855a41903da0f14bb390a5b9986323b3aa017234"
+    },
+    {
+      "path": "img/architecture.png",
+      "bytes": 844989,
+      "sha256": "f4d095f56b12d9d57c3ed9bb9869845562120ce91e9175024a0bcc53e80a7d50"
+    },
+    {
+      "path": "img/top-10-customers.png",
+      "bytes": 41929,
+      "sha256": "6b142f43b752f7b06f844e072e3c360ef89109ab9aea44a95dbee72295037729"
+    },
+    {
+      "path": "img/vanna-readme-diagram.png",
+      "bytes": 373408,
+      "sha256": "cb6ca04cd86e2ee5c419a3eda37344c5a9f15d210f7290ba9dcddf0d23a0a490"
+    },
+    {
+      "path": "img/vanna2.svg",
+      "bytes": 196342,
+      "sha256": "30c8fce0de159528dd95673dfcc930f5a1626ce77551a8b80bbd446f141da650"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1065,
+      "sha256": "55888f30c0ea8fd05cc5490062aac0cc9a67e6d0855c2ae78257d1a92e65f519"
+    },
+    {
+      "path": "MIGRATION_GUIDE.md",
+      "bytes": 10179,
+      "sha256": "19b2408e4d90482c5705c68d7f7c779516e849db1302abaf54ebb2f4ff9580b2"
+    },
+    {
+      "path": "notebooks/quickstart.ipynb",
+      "bytes": 4824,
+      "sha256": "afca38b11ef10d1b4c4f0207fc6c9205070bca97e08d492f951361550704b514"
+    },
+    {
+      "path": "papers/ai-sql-accuracy-2023-08-17.md",
+      "bytes": 18860,
+      "sha256": "2168d30d64debd98bfb7de96a8126bf3afaa437e239ad4eaf7ec087bd30b4d5e"
+    },
+    {
+      "path": "papers/img/accuracy-by-llm.png",
+      "bytes": 160749,
+      "sha256": "0951eac24fb32d6f9c8ed913b660c0bdf23e133aac3a38163fc3e1206a43bc93"
+    },
+    {
+      "path": "papers/img/accuracy-using-contextual-examples.png",
+      "bytes": 219354,
+      "sha256": "d19a7ba0485fe1bbe6e27d8309fd9c3059102df0f9c6d91baae31bf0a72cdbe1"
+    },
+    {
+      "path": "papers/img/accuracy-using-schema-only.png",
+      "bytes": 122798,
+      "sha256": "a4755d831f0ee7cb88748299ccf923639d13f93508dce0ab6520afb0c16ad526"
+    },
+    {
+      "path": "papers/img/accuracy-using-static-examples.png",
+      "bytes": 177743,
+      "sha256": "c5e08adda00d26f49bb6119da8e933bc0bd05c525733411f50f4672a85f4b58e"
+    },
+    {
+      "path": "papers/img/chat-gpt-question.png",
+      "bytes": 62203,
+      "sha256": "1cf2c46b37b7f08e96b00cd65907e468bf7172741f36dbfe11b95ac383bbff3d"
+    },
+    {
+      "path": "papers/img/chatgpt-results.png",
+      "bytes": 164947,
+      "sha256": "b56c3fab34b576fc877c3a225249959a8fb285544a7557e51f70f90f42082e12"
+    },
+    {
+      "path": "papers/img/framework-for-sql-generation.png",
+      "bytes": 108562,
+      "sha256": "2ed0126c310b863b83e01b409545adc34c9a0211a162281f8e72ece643105994"
+    },
+    {
+      "path": "papers/img/question-flow.png",
+      "bytes": 81260,
+      "sha256": "e21bc6bdf057f35eed713d1a8b25fd226d98dcc2931d192463dd655bf64c0589"
+    },
+    {
+      "path": "papers/img/schema-only.png",
+      "bytes": 151833,
+      "sha256": "69a10565a4f230afdae83d26194ba6b9dc0fef50edabf368c30c20859c56da62"
+    },
+    {
+      "path": "papers/img/sql-error.png",
+      "bytes": 43107,
+      "sha256": "e8b149457b6b106e737d9ca7e062f18a62fedc9625fa348b8c4f4c9a6437a339"
+    },
+    {
+      "path": "papers/img/summary-table.png",
+      "bytes": 104753,
+      "sha256": "ea9b572201debee9f9fe2b621361c9f16c44b926f1f011771d6d1fef96ed20f3"
+    },
+    {
+      "path": "papers/img/summary.png",
+      "bytes": 279799,
+      "sha256": "9f4b93cdedd792942543331f63ed7b552cbfa340e749247ad37e9a64dafe9694"
+    },
+    {
+      "path": "papers/img/test-architecture.png",
+      "bytes": 186149,
+      "sha256": "5964ef74f356bd497a1fb54e600ea4e9c8c8a9b33817133893267bf22e6aa6d8"
+    },
+    {
+      "path": "papers/img/test-levers.png",
+      "bytes": 111694,
+      "sha256": "fa00bf6a6f48ac594dcb279a693fff02e9b92860912ab5625986e98e522e9e3a"
+    },
+    {
+      "path": "papers/img/using-contextually-relevant-examples.png",
+      "bytes": 202886,
+      "sha256": "dc4c265790c7324cc1fd28f4c47c218ac82cf440a8459214cdfac216bb1fa397"
+    },
+    {
+      "path": "papers/img/using-sql-examples.png",
+      "bytes": 187567,
+      "sha256": "1a699d9d1cbd674e43b48d802472a71d935c0fbc9ffb5ca82d9da9bb26f727da"
+    },
+    {
+      "path": "patches/0001-fix-sqlite-runner.patch",
+      "bytes": 25124,
+      "sha256": "c1457de51be9b45276223ed7076a6a23aad81d0cafaedb0dccdd5147e43f2cee"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 7145,
+      "sha256": "1348f552e6c77762ca17843a228b0a81398df3b76a4879d2b976c30029ca223b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 10083,
+      "sha256": "7401c2ce43f9012db8f2fc2e549a0c6f7cd302f432389ccabc1676562023e743"
+    },
+    {
+      "path": "README_LEGACY.md",
+      "bytes": 10225,
+      "sha256": "8aac666c13046f75ab29bf6f87dc174224ecf63db823edc52230d769522630ad"
+    },
+    {
+      "path": "requirements-lock.txt",
+      "bytes": 1034,
+      "sha256": "2d0508829202245f58aac799ca99da80eecbb129b3479de50313bf377ada79bf"
+    },
+    {
+      "path": "setup.cfg",
+      "bytes": 277,
+      "sha256": "64fe9ea295c14abb222fa7c48bb489411678e533055a24fa3dd1d4fa48d550af"
+    },
+    {
+      "path": "src/evals/benchmarks/llm_comparison.py",
+      "bytes": 4811,
+      "sha256": "8e53df730c9d14a3b89e3ea45cb7ef6b5e38aaf3fd03868eeb2d4bc2a41299a3"
+    },
+    {
+      "path": "src/evals/datasets/sql_generation/basic.yaml",
+      "bytes": 4079,
+      "sha256": "baf763cd4b09811e01ae9252bd6a78f396da35e94ebd6a80d5ec9ae7c8817879"
+    },
+    {
+      "path": "src/vanna/__init__.py",
+      "bytes": 3683,
+      "sha256": "260eae40e26da5666d7a94f8ac01cc62e1647d0fe2c9490548dbdac468643f77"
+    },
+    {
+      "path": "src/vanna/agents/__init__.py",
+      "bytes": 116,
+      "sha256": "4620ae68fa206b2d56b7384ad50a3f6947d246ea1a29ee483cea3a66e70e9fb0"
+    },
+    {
+      "path": "src/vanna/capabilities/__init__.py",
+      "bytes": 392,
+      "sha256": "9dc587da45bab85cc74e0a44493ab9680f5042fc8f38cd6ae95f5de7cf274c1b"
+    },
+    {
+      "path": "src/vanna/capabilities/agent_memory/__init__.py",
+      "bytes": 350,
+      "sha256": "550789ebc6ae1f7401d5597ba5cc740243700e9b8c7e70ba08766ae14eff210f"
+    },
+    {
+      "path": "src/vanna/capabilities/agent_memory/base.py",
+      "bytes": 2988,
+      "sha256": "87bd317ae7f55fcd7abfa0951ca653fe09b663f20168dc2500626c72b02bcd6b"
+    },
+    {
+      "path": "src/vanna/capabilities/agent_memory/models.py",
+      "bytes": 1125,
+      "sha256": "7d485bdf44d92b714742b0d819f8e69c09d98bfadc3a2cfd92611dea0a04fe65"
+    },
+    {
+      "path": "src/vanna/capabilities/file_system/__init__.py",
+      "bytes": 267,
+      "sha256": "9e0e496f9bc97f2594a9edb89d73327b2b7aadbbbb19f9a32413eae19e4ec7ca"
+    },
+    {
+      "path": "src/vanna/capabilities/file_system/base.py",
+      "bytes": 1859,
+      "sha256": "576db6da62e8f22f103e2fea676079aae67af8ba1f4a84522b67a8e6d4d7b450"
+    },
+    {
+      "path": "src/vanna/capabilities/file_system/models.py",
+      "bytes": 464,
+      "sha256": "c4cf0f747aaeadca1a1abbd4091566992c7b6b7b66e4c4d5fd08dd21ae6d44e1"
+    },
+    {
+      "path": "src/vanna/capabilities/sql_runner/__init__.py",
+      "bytes": 217,
+      "sha256": "3c205b1cd1a189f286bd0cb8ad299d436ddbdbbce905514c3cee7485cc9e5f89"
+    },
+    {
+      "path": "src/vanna/capabilities/sql_runner/base.py",
+      "bytes": 826,
+      "sha256": "89542f3f9a095e3e559e25c638e2756b8a9d6d22c5804d4cef67a159ae49bf36"
+    },
+    {
+      "path": "src/vanna/capabilities/sql_runner/models.py",
+      "bytes": 261,
+      "sha256": "8fc1e6f2d652ee3e8e9b4c562d582fa2ab083c24204e08960c9f50b314911103"
+    },
+    {
+      "path": "src/vanna/components/__init__.py",
+      "bytes": 2057,
+      "sha256": "6cdf4af0985ba42e1425710a6f75edd77031284b8729858ae9f4cdb62110f979"
+    },
+    {
+      "path": "src/vanna/components/base.py",
+      "bytes": 341,
+      "sha256": "c653e3c5da65c109daa9bc96cd6fa4f46e8f16b780e8bb9fcc30e7e54b1c88af"
+    },
+    {
+      "path": "src/vanna/components/rich/__init__.py",
+      "bytes": 1735,
+      "sha256": "d7c36ab70e6cca7772e3c5ac57d7bf9e4cdb925cd135df1a8da9058332b2da5a"
+    },
+    {
+      "path": "src/vanna/components/rich/containers/__init__.py",
+      "bytes": 108,
+      "sha256": "135681e031888f862063381305b75471f556142c07d2874bbd13aa9ca6e2955d"
+    },
+    {
+      "path": "src/vanna/components/rich/containers/card.py",
+      "bytes": 717,
+      "sha256": "cc28b37556b5db768da6bde6bc25a50d6a60ca620a5910af2870c869287d049a"
+    },
+    {
+      "path": "src/vanna/components/rich/data/__init__.py",
+      "bytes": 171,
+      "sha256": "c12f8df36495c767d49b14a9417c15c2f0248bcdb03aa1ee68a92124ba491e40"
+    },
+    {
+      "path": "src/vanna/components/rich/data/chart.py",
+      "bytes": 655,
+      "sha256": "f863f32e0c7c7c6f1f2a9fe4781da4c3d55fdd5570eb831ebc038b7ba25a0d0a"
+    },
+    {
+      "path": "src/vanna/components/rich/data/dataframe.py",
+      "bytes": 3166,
+      "sha256": "3f2df9069e63ca19d0683e3dee8bd6643535ea426e5e59b021ede712c224898e"
+    },
+    {
+      "path": "src/vanna/components/rich/feedback/__init__.py",
+      "bytes": 630,
+      "sha256": "7b0fff9d4fe68c58fed01c33f9b6185a2f5e558677cd149df7749eddbdb79118"
+    },
+    {
+      "path": "src/vanna/components/rich/feedback/badge.py",
+      "bytes": 514,
+      "sha256": "9d4cd07805616428c346beba97b6ba07e9d2c14da15534c99c431b1920fff46d"
+    },
+    {
+      "path": "src/vanna/components/rich/feedback/icon_text.py",
+      "bytes": 467,
+      "sha256": "995e2a497c996d9aec364d6096e768d27ef2eeffc8c4aa902f25e4b73488eec1"
+    },
+    {
+      "path": "src/vanna/components/rich/feedback/log_viewer.py",
+      "bytes": 1332,
+      "sha256": "7a9bbced7b3b34c7045cbb35f3a9e148c8d3eca8cd05793014c105721e288fc2"
+    },
+    {
+      "path": "src/vanna/components/rich/feedback/notification.py",
+      "bytes": 670,
+      "sha256": "205ee12cdfb9614e39e22cd1b78347fefaef494fb30b63e39fb6369c7aa98080"
+    },
+    {
+      "path": "src/vanna/components/rich/feedback/progress.py",
+      "bytes": 1312,
+      "sha256": "970ce625f86ffe23c48ab8d67c5edfe1bec0cdfd750aba54a24bb7d56495e113"
+    },
+    {
+      "path": "src/vanna/components/rich/feedback/status_card.py",
+      "bytes": 1058,
+      "sha256": "138b859b2c091d0ce5dc504fb35973d9dd4829949da8081281d7c9ceac41dad6"
+    },
+    {
+      "path": "src/vanna/components/rich/feedback/status_indicator.py",
+      "bytes": 425,
+      "sha256": "23de7194edffe998ad9b65954c4bf1c7602f1db312ef04bd17ceb3a9bd8da974"
+    },
+    {
+      "path": "src/vanna/components/rich/interactive/__init__.py",
+      "bytes": 495,
+      "sha256": "f4979a3a0deabef15ecc98d65fa1385f66c5a3ba141a876722972edf1b7baefd"
+    },
+    {
+      "path": "src/vanna/components/rich/interactive/button.py",
+      "bytes": 2942,
+      "sha256": "5f77cdf97068f795f55987983639d59da89859595e927fc04e00693d2b55b766"
+    },
+    {
+      "path": "src/vanna/components/rich/interactive/task_list.py",
+      "bytes": 2046,
+      "sha256": "89beed99c8f92bda0df53f26d15c3698f518881e64e7c4989ca4103b94866f62"
+    },
+    {
+      "path": "src/vanna/components/rich/interactive/ui_state.py",
+      "bytes": 3214,
+      "sha256": "d6e9f820f6c708086d37e11977b9870d4809eb6c84284debe0c94e088189ddf9"
+    },
+    {
+      "path": "src/vanna/components/rich/specialized/__init__.py",
+      "bytes": 111,
+      "sha256": "12c4e211a6695a80997066ac0fd897ff89e7394018ee13bacfa61cdfc297453e"
+    },
+    {
+      "path": "src/vanna/components/rich/specialized/artifact.py",
+      "bytes": 752,
+      "sha256": "df53f526803b350090d97bd270f01b0d5fe5725006d4ce04e4859f2396d53381"
+    },
+    {
+      "path": "src/vanna/components/rich/text.py",
+      "bytes": 485,
+      "sha256": "175ee3346311c5ad3829b0549e4acc11b5e818030d620a383ec7a9b674eb0c4e"
+    },
+    {
+      "path": "src/vanna/components/simple/__init__.py",
+      "bytes": 405,
+      "sha256": "9608637c04a69ba94e69fe82a580d10c9681b7b1a7bec74e0776366d27e33fdb"
+    },
+    {
+      "path": "src/vanna/components/simple/image.py",
+      "bytes": 487,
+      "sha256": "5bb4e117fed3c532b02984769b5ec77581178cf5d43222634060be45923eda41"
+    },
+    {
+      "path": "src/vanna/components/simple/link.py",
+      "bytes": 473,
+      "sha256": "8f5d3556225f833447ad85724f4a75fe12a96ae95cc0bfb61cbfd9bff86ce2e4"
+    },
+    {
+      "path": "src/vanna/components/simple/text.py",
+      "bytes": 341,
+      "sha256": "3cb5f3bde86cd24907201ccd88b44c66d445a0a35533315075c4100ab49d3429"
+    },
+    {
+      "path": "src/vanna/core/__init__.py",
+      "bytes": 4776,
+      "sha256": "c8f0925b44fa9c1fab8497588b7e7197473271d88ddf3ce6480d01ad8cb1b22b"
+    },
+    {
+      "path": "src/vanna/core/_compat.py",
+      "bytes": 414,
+      "sha256": "c2de7be1dcfd492e41df794a3d86042e58976a38bc4028f8116b7efa314122b6"
+    },
+    {
+      "path": "src/vanna/core/agent/__init__.py",
+      "bytes": 187,
+      "sha256": "e17ed5423f47470ee7ef404254e679338e9d5125a2c712ce2312ece5e352cdf5"
+    },
+    {
+      "path": "src/vanna/core/agent/agent.py",
+      "bytes": 61689,
+      "sha256": "06733b40e1cd5937db0b4a601c00d0c4da85ff98eefa267d1422df070688e263"
+    },
+    {
+      "path": "src/vanna/core/agent/config.py",
+      "bytes": 4415,
+      "sha256": "9bb39ca3d7c9bdb954fceefbb680ae3c6f0d14970fccc3a32d8bddf359b5da59"
+    },
+    {
+      "path": "src/vanna/core/audit/__init__.py",
+      "bytes": 623,
+      "sha256": "80c5cab2d2b7178e8f23a86aa84d0618549321d69b17590a4dceef1c21aaae39"
+    },
+    {
+      "path": "src/vanna/core/audit/base.py",
+      "bytes": 9726,
+      "sha256": "63d59b1679195dbb483f6eb2e1034fd3144fdc46426da52333aaed273f366de3"
+    },
+    {
+      "path": "src/vanna/core/audit/models.py",
+      "bytes": 3614,
+      "sha256": "6ef3f55c02ed1c928df4ab999f4d2e541cec4b668e6e1ff49ce5052f490e679d"
+    },
+    {
+      "path": "src/vanna/core/component_manager.py",
+      "bytes": 11311,
+      "sha256": "f353fc4964dbcdaa7ccb3330c05bfd822ca3178a40031ef6ec1ee24c8f09ab03"
+    },
+    {
+      "path": "src/vanna/core/components.py",
+      "bytes": 1868,
+      "sha256": "f1378e0e112872bdf8d7b1e361ddff251f11eaa0fd4820b6911eee7094762d10"
+    },
+    {
+      "path": "src/vanna/core/enhancer/__init__.py",
+      "bytes": 392,
+      "sha256": "2681da42f6e94d0f87e1081712f1bd7f46decc332ade564f1264aaa8bfb67b94"
+    },
+    {
+      "path": "src/vanna/core/enhancer/base.py",
+      "bytes": 3094,
+      "sha256": "94c3bea863304efefcb72e2f0a3014a370db402be1ac7d5d3d9f8f59a28aac49"
+    },
+    {
+      "path": "src/vanna/core/enhancer/default.py",
+      "bytes": 3988,
+      "sha256": "f0b02c33c2285ebb76ae3d16198cd643de750bc2d604ce4d807fc5876d26741d"
+    },
+    {
+      "path": "src/vanna/core/enricher/__init__.py",
+      "bytes": 254,
+      "sha256": "d69f450a88118a5b57e6e9f61a7767415c10259778ace59c85f2c8ca380afabf"
+    },
+    {
+      "path": "src/vanna/core/enricher/base.py",
+      "bytes": 1759,
+      "sha256": "bd4fa600a678ba671cae48448fc58f8884ad3f0970d315bebef398c005ba0614"
+    },
+    {
+      "path": "src/vanna/core/errors.py",
+      "bytes": 751,
+      "sha256": "dce96d4406331ebf007ba3c385ece95dc37b5fee185537d5f9cc621ab0c8878e"
+    },
+    {
+      "path": "src/vanna/core/evaluation/__init__.py",
+      "bytes": 2053,
+      "sha256": "b3770e80406404a4f8be8042d5ab70af8dc0d4e0b4df8af2c1f5a5f4ac2061fb"
+    },
+    {
+      "path": "src/vanna/core/evaluation/base.py",
+      "bytes": 6041,
+      "sha256": "ea838a755b5f73b64b4077ae61b5d36ba2cd6b1797621716842edd8d2c75a0e7"
+    },
+    {
+      "path": "src/vanna/core/evaluation/dataset.py",
+      "bytes": 8074,
+      "sha256": "40598901090be48f6a2eb959e181f9599474cf7c388fce922c313b1f4c100d6b"
+    },
+    {
+      "path": "src/vanna/core/evaluation/evaluators.py",
+      "bytes": 12574,
+      "sha256": "831531c77468ca8a9deda1718248ea2c84803d40bc5048724db0b70aa8a6b180"
+    },
+    {
+      "path": "src/vanna/core/evaluation/report.py",
+      "bytes": 10626,
+      "sha256": "40d295f32ee652e916ebfaf28498904790665a95c8c3175166733de5f19c6982"
+    },
+    {
+      "path": "src/vanna/core/evaluation/runner.py",
+      "bytes": 10108,
+      "sha256": "3d1e488ec7ebb7058ec92a6c97e8d8732283843b0527a7f4314c3cf19d93c1c0"
+    },
+    {
+      "path": "src/vanna/core/filter/__init__.py",
+      "bytes": 259,
+      "sha256": "c1e184895c13f66904e2a3a7c451e16e79401c88ac3464f9805f034642db0c68"
+    },
+    {
+      "path": "src/vanna/core/filter/base.py",
+      "bytes": 2035,
+      "sha256": "2edf8b0f242c13b259fcd144028d53b8d4082229240ff2148b2050de1ffdf8df"
+    },
+    {
+      "path": "src/vanna/core/lifecycle/__init__.py",
+      "bytes": 233,
+      "sha256": "554c4f97625b434507b0fdd6f864bf73b3f70c9b8580ac22e0cedf276589169f"
+    },
+    {
+      "path": "src/vanna/core/lifecycle/base.py",
+      "bytes": 2292,
+      "sha256": "eefe88c1c042845680377a5ad66390841c28a4dc4a9b0131a2c81a846dec4f4a"
+    },
+    {
+      "path": "src/vanna/core/llm/__init__.py",
+      "bytes": 324,
+      "sha256": "a10225da927f2a22343cc27e2f2c43cf20e28a94b45cb51c55f7baff9716a82a"
+    },
+    {
+      "path": "src/vanna/core/llm/base.py",
+      "bytes": 1067,
+      "sha256": "d6f0b6f56d6f8e472b858e37fa63815c9cae6146ea1ac5e29e6029f10959e9f1"
+    },
+    {
+      "path": "src/vanna/core/llm/models.py",
+      "bytes": 1962,
+      "sha256": "65335f284ce564ebe8f0b950a1f3d64091fe71f13db8c5b25e7194feeef42ddf"
+    },
+    {
+      "path": "src/vanna/core/middleware/__init__.py",
+      "bytes": 233,
+      "sha256": "9290433d1086989826885b7a041c68820b9948b9773c98a065e40c9dcb2e5cc5"
+    },
+    {
+      "path": "src/vanna/core/middleware/base.py",
+      "bytes": 1985,
+      "sha256": "74ca1935720c67e42047af5516143e2e0aaa48ac534f9635055e8394b1d12f07"
+    },
+    {
+      "path": "src/vanna/core/observability/__init__.py",
+      "bytes": 284,
+      "sha256": "81cdd8480676d543be37a5ef61f8fdd9d8327649625ad621df7fc0d630eb80b1"
+    },
+    {
+      "path": "src/vanna/core/observability/base.py",
+      "bytes": 2557,
+      "sha256": "a05eaecac17b7b89d484238c8eecfc20071951a83775230118f23f3c7a1ddefa"
+    },
+    {
+      "path": "src/vanna/core/observability/models.py",
+      "bytes": 1638,
+      "sha256": "c4dc0783d4547b0f6bb847bf5f19fa7056da795dd94acd5bf58699f3c1ffb6d8"
+    },
+    {
+      "path": "src/vanna/core/recovery/__init__.py",
+      "bytes": 335,
+      "sha256": "4d8a6b63a7e80aa9d5caded0246c6f1bb4113d34924ef98bab141e3547c7be35"
+    },
+    {
+      "path": "src/vanna/core/recovery/base.py",
+      "bytes": 2736,
+      "sha256": "a521eb74f5435d30942d23e8ba3991247be90f49bec48585ceb5a2c79b41405c"
+    },
+    {
+      "path": "src/vanna/core/recovery/models.py",
+      "bytes": 811,
+      "sha256": "a888ba8033ca04e430115f92cb85817ee9c932a567f8a9b2f9d88dd13618ea4a"
+    },
+    {
+      "path": "src/vanna/core/registry.py",
+      "bytes": 9469,
+      "sha256": "22a573190d6bb8f6acdc1ca99fd7daca698aa37f36221189e8d765634ae42b96"
+    },
+    {
+      "path": "src/vanna/core/rich_component.py",
+      "bytes": 4868,
+      "sha256": "49da5c4c71a285ced3caf0e0ffb73992f70675ae2a465ff64c311828f0397d27"
+    },
+    {
+      "path": "src/vanna/core/simple_component.py",
+      "bytes": 820,
+      "sha256": "fea7a5e6071c15570d8a4c66c55d50f93351e380f1a3ae0c56e31e0ccbc49707"
+    },
+    {
+      "path": "src/vanna/core/storage/__init__.py",
+      "bytes": 278,
+      "sha256": "a70ea8e2722e7ec9a6d0f4d5550ff9231e5e0c1f00ac9455fdab2d5128bff8b1"
+    },
+    {
+      "path": "src/vanna/core/storage/base.py",
+      "bytes": 1269,
+      "sha256": "9a7d5758a3f06801ce57d76527ecdc49c4399669e184aff521163e1c138e1f70"
+    },
+    {
+      "path": "src/vanna/core/storage/models.py",
+      "bytes": 1556,
+      "sha256": "d064560c457af30a399f988076d1f47cc0919e822a5a7cbd6dff6face40b4828"
+    },
+    {
+      "path": "src/vanna/core/system_prompt/__init__.py",
+      "bytes": 296,
+      "sha256": "3f4e4a738ce6dd5c7f9b6502648182c216d020c3fbfc7756cd3108a0efcdbb65"
+    },
+    {
+      "path": "src/vanna/core/system_prompt/base.py",
+      "bytes": 986,
+      "sha256": "58655060e3273d54f4533b0e83e84e6014ee32f19a35f583592e62ba38a567f3"
+    },
+    {
+      "path": "src/vanna/core/system_prompt/default.py",
+      "bytes": 6926,
+      "sha256": "5a3324b0ae1e8685749753b7315af2089800916e21b92d84158173d341fad302"
+    },
+    {
+      "path": "src/vanna/core/tool/__init__.py",
+      "bytes": 342,
+      "sha256": "6a6f9a341bbd5a6d775ef497cdc251e9ca84e26937db75b7cde493309fd1a9d6"
+    },
+    {
+      "path": "src/vanna/core/tool/base.py",
+      "bytes": 1871,
+      "sha256": "8c2cd32c4ac9a2ebc1ae1de5d1f94f5fb5187d8c011a0472b57acb0ee508e213"
+    },
+    {
+      "path": "src/vanna/core/tool/models.py",
+      "bytes": 2790,
+      "sha256": "23c0d52125a08f9cc7b146e134bf958d73384b65f9c510d5c1e09444968ffc2a"
+    },
+    {
+      "path": "src/vanna/core/user/__init__.py",
+      "bytes": 339,
+      "sha256": "7fb64b66834df779dc99038dbe1bd2e40798a5c212f1371a2de0808cfeacc7f7"
+    },
+    {
+      "path": "src/vanna/core/user/base.py",
+      "bytes": 753,
+      "sha256": "a17ec5c00d01ff4673768039f6bc1453a4a553443d401dab9e39041981e03c83"
+    },
+    {
+      "path": "src/vanna/core/user/models.py",
+      "bytes": 742,
+      "sha256": "a2f585fcbdfedcc1c4b896b4c89c3e91a3062deead305ef4ec57f5458bb29520"
+    },
+    {
+      "path": "src/vanna/core/user/request_context.py",
+      "bytes": 2156,
+      "sha256": "1926c54ee3cb995d9d79acd0d3162d0a08e10b5677a193bdf3d733478df4a83d"
+    },
+    {
+      "path": "src/vanna/core/user/resolver.py",
+      "bytes": 1293,
+      "sha256": "d2b3ac187f01445f3ff67977915592b913969a97adce964b2ca3ceb2a5f99a5a"
+    },
+    {
+      "path": "src/vanna/core/validation.py",
+      "bytes": 5484,
+      "sha256": "8409b358658648c83d1601f4b0b13d4c02316f9d469f573e061663cff96fd739"
+    },
+    {
+      "path": "src/vanna/core/workflow/__init__.py",
+      "bytes": 475,
+      "sha256": "0d7d4d41184b7b11c4bf500287510684a32e46d187d6515254ae95731ca038bd"
+    },
+    {
+      "path": "src/vanna/core/workflow/base.py",
+      "bytes": 10059,
+      "sha256": "d56910049d3bbaf1dbb69afb0253357d8db6b4290d45aad79cf7d33f6498371f"
+    },
+    {
+      "path": "src/vanna/core/workflow/default.py",
+      "bytes": 31946,
+      "sha256": "bdbd7416aea4849fe73859a28e27eb3ed83b86ca715f6627bb9d75b3334a0627"
+    },
+    {
+      "path": "src/vanna/examples/__init__.py",
+      "bytes": 53,
+      "sha256": "f6d208178f7fc88a5a7377801d8568ff385b6990ffaddd0965fed1e53eccbb88"
+    },
+    {
+      "path": "src/vanna/examples/__main__.py",
+      "bytes": 1396,
+      "sha256": "51b5e87462738f80a2f687232e8de7ed43517b1a0b528367f4c6ae1e68bbde8c"
+    },
+    {
+      "path": "src/vanna/examples/anthropic_quickstart.py",
+      "bytes": 2314,
+      "sha256": "11010e1fc6876d130b0e716becc5325d0f0f3d94cf288b3fedda7b9708d193a8"
+    },
+    {
+      "path": "src/vanna/examples/artifact_example.py",
+      "bytes": 12210,
+      "sha256": "735d62a0385acfb7fc6a958a12deef6441ec7bc0cd5f13a856947b276b34cb4b"
+    },
+    {
+      "path": "src/vanna/examples/claude_sqlite_example.py",
+      "bytes": 7951,
+      "sha256": "bd273abc67b2db7f218408bac0b7d0b3285e2687caa9913fe1d45b670c0a2f5b"
+    },
+    {
+      "path": "src/vanna/examples/coding_agent_example.py",
+      "bytes": 11015,
+      "sha256": "92ad013aab2b3a8b0ca189ca6959a370920984aca87ce5045163ff5aa423fd86"
+    },
+    {
+      "path": "src/vanna/examples/custom_system_prompt_example.py",
+      "bytes": 5541,
+      "sha256": "c467f51f7c354c1c4dd107b26c132a1198ee73ef45edb3f720f5daa2a753ec85"
+    },
+    {
+      "path": "src/vanna/examples/default_workflow_handler_example.py",
+      "bytes": 7238,
+      "sha256": "71cb93a23206ae4a7abd2b62feb747424c3e7d840fc45284e584c8be376aa1b2"
+    },
+    {
+      "path": "src/vanna/examples/email_auth_example.py",
+      "bytes": 11527,
+      "sha256": "30c51ed3c732765cd30d698177bc8ef77007cc8b0be92d2943ff24024bd175af"
+    },
+    {
+      "path": "src/vanna/examples/evaluation_example.py",
+      "bytes": 8521,
+      "sha256": "548192a1a65a31447cb2d6b7ad27edb2716e37c3a1065d5d16a1e3baa6161861"
+    },
+    {
+      "path": "src/vanna/examples/extensibility_example.py",
+      "bytes": 9315,
+      "sha256": "57b6f46ca273452a38580b95d6c1ca10413804722c4cc882882f4286c7565f55"
+    },
+    {
+      "path": "src/vanna/examples/minimal_example.py",
+      "bytes": 1939,
+      "sha256": "f585e296401ca0cb3361ddc10ef39e25f44c6d8153384da6a8e9eb95501af5eb"
+    },
+    {
+      "path": "src/vanna/examples/mock_auth_example.py",
+      "bytes": 7543,
+      "sha256": "47fd2a69cb03d0e3b56e98ebc703d4240ba8ea4075750b7cc61f456beeacce90"
+    },
+    {
+      "path": "src/vanna/examples/mock_custom_tool.py",
+      "bytes": 10598,
+      "sha256": "5aebe6a10e49b79567cb58293ddc30b102e6f563eeae9255eb473af38ba9cf4f"
+    },
+    {
+      "path": "src/vanna/examples/mock_quickstart.py",
+      "bytes": 2004,
+      "sha256": "bbb8001ecbbb5a9ee50ee0712cc6da21976c359db7487c7ef047b7ce0b1b2bfa"
+    },
+    {
+      "path": "src/vanna/examples/mock_quota_example.py",
+      "bytes": 4689,
+      "sha256": "6699b2193fa867af687f76c6f909e7c53f0038d92610680f7b5ee2794ae72382"
+    },
+    {
+      "path": "src/vanna/examples/mock_rich_components_demo.py",
+      "bytes": 12673,
+      "sha256": "0f6a9f761ec19d40db5be9f9cfad34aa46c9206b83d7a3e0a97e4d2b5fba04fe"
+    },
+    {
+      "path": "src/vanna/examples/mock_sqlite_example.py",
+      "bytes": 7360,
+      "sha256": "f4bcdeaeb8d824c5bce92e573cef1de144c05fe05b8a25bc2db9f6c2bba32015"
+    },
+    {
+      "path": "src/vanna/examples/openai_quickstart.py",
+      "bytes": 2493,
+      "sha256": "db31f59283788129abfe0744af91cc541a5cb3c0232b15205ebe920f62b22fad"
+    },
+    {
+      "path": "src/vanna/examples/primitive_components_demo.py",
+      "bytes": 9742,
+      "sha256": "ad21cc4b442f32f4670a7371d60497674f998176ee92b6c4b76ec6d048ee53d8"
+    },
+    {
+      "path": "src/vanna/examples/quota_lifecycle_example.py",
+      "bytes": 4470,
+      "sha256": "b1a0ca4e5817781fb9a80d7eb922ad2a9a3c3f10dbc02fa4158d3268e8782236"
+    },
+    {
+      "path": "src/vanna/examples/visualization_example.py",
+      "bytes": 8387,
+      "sha256": "5ca1b6d717333fb5a7029384435f256a70fc3625727343b096c3549e502aa6ef"
+    },
+    {
+      "path": "src/vanna/integrations/__init__.py",
+      "bytes": 383,
+      "sha256": "1ffc85bdd5d5996e310d0c8000902322558d754bc6a26d79ac821648646ba7e7"
+    },
+    {
+      "path": "src/vanna/integrations/anthropic/__init__.py",
+      "bytes": 164,
+      "sha256": "709e4b7071207cf3e87bacfd849e317220e132ffe5e63af5ff9f4415c3797229"
+    },
+    {
+      "path": "src/vanna/integrations/anthropic/llm.py",
+      "bytes": 10189,
+      "sha256": "7bdf4ee79298c7f3e30f549ec7ad0bc5ab26b12e49c945fcb5f14dd3ce5c2b51"
+    },
+    {
+      "path": "src/vanna/integrations/azureopenai/__init__.py",
+      "bytes": 175,
+      "sha256": "3fe7e9e66ce59757a0028e4673dd35f93a3a3213f250ad6457c8d12eff070147"
+    },
+    {
+      "path": "src/vanna/integrations/azureopenai/llm.py",
+      "bytes": 12428,
+      "sha256": "24b3b61b82321b5b5e6058d72409a63b3207a0b153e307c0974909eb9af4b89d"
+    },
+    {
+      "path": "src/vanna/integrations/azuresearch/__init__.py",
+      "bytes": 146,
+      "sha256": "1e5c1e751a8217e67308a417f4ebb5273b6bcb77ac49bda86d9439ab43b775ad"
+    },
+    {
+      "path": "src/vanna/integrations/azuresearch/agent_memory.py",
+      "bytes": 13823,
+      "sha256": "cf319098f3a0ae42f2e4f03ade3a036b9129aeb341f8c024994acbff7a88417b"
+    },
+    {
+      "path": "src/vanna/integrations/bigquery/__init__.py",
+      "bytes": 108,
+      "sha256": "4b0fa4ad284fbf79ce2d021f55049f9424165ea210fa017f782b84e861dab4d6"
+    },
+    {
+      "path": "src/vanna/integrations/bigquery/sql_runner.py",
+      "bytes": 2691,
+      "sha256": "eb909c19d5fa931392e70506490e79f30e3fd281f8d76b55d1fe635700dccf1d"
+    },
+    {
+      "path": "src/vanna/integrations/chromadb/__init__.py",
+      "bytes": 3642,
+      "sha256": "b0fba662b7fd84c56010787aaf35dd5aef4ead590eb9c039fc7910e0b5df2146"
+    },
+    {
+      "path": "src/vanna/integrations/chromadb/agent_memory.py",
+      "bytes": 18347,
+      "sha256": "9dc70c76fd950eb16479fc3e85f2912c5502fd382bb80a662b34784fa96f04aa"
+    },
+    {
+      "path": "src/vanna/integrations/clickhouse/__init__.py",
+      "bytes": 114,
+      "sha256": "29eecfe07ac7b602594df0a72afd8ff1f9404ba218fa5b992ed2426660e50a28"
+    },
+    {
+      "path": "src/vanna/integrations/clickhouse/sql_runner.py",
+      "bytes": 2350,
+      "sha256": "d7de73f948a3ebd030c8f396de73ba8a98e019f034a09d538312dcb066bb56d1"
+    },
+    {
+      "path": "src/vanna/integrations/duckdb/__init__.py",
+      "bytes": 102,
+      "sha256": "910893bf4679a33708a4bf05699a597987f181b13a7ad7aa2308e56daa95e088"
+    },
+    {
+      "path": "src/vanna/integrations/duckdb/sql_runner.py",
+      "bytes": 2088,
+      "sha256": "60e4a9f188e82c18b243d454fd22b1f29d4ae2921f83b77e113dc94f4b225d47"
+    },
+    {
+      "path": "src/vanna/integrations/faiss/__init__.py",
+      "bytes": 120,
+      "sha256": "35809020915dfaf1a87290bdb55ea94af35aefffb56818985c125f8a628f81d7"
+    },
+    {
+      "path": "src/vanna/integrations/faiss/agent_memory.py",
+      "bytes": 14370,
+      "sha256": "7bc7d53115cbbad56223c491b2de0e71c4260d812978617c542b0e3d5931766a"
+    },
+    {
+      "path": "src/vanna/integrations/google/__init__.py",
+      "bytes": 159,
+      "sha256": "35a4219f01c0f6eee06383a1c3b8f195d30eb9ea054f77a244541a4ba92e9266"
+    },
+    {
+      "path": "src/vanna/integrations/google/gemini.py",
+      "bytes": 13091,
+      "sha256": "98e23ff6fa7264b469bb1cba6825dbb8b83102da4f9209de0467fca2f2497718"
+    },
+    {
+      "path": "src/vanna/integrations/hive/__init__.py",
+      "bytes": 96,
+      "sha256": "4970ab4cdab1099f91b49904369f5eb70ea5fd7b8f20f50b1915225fab5982b3"
+    },
+    {
+      "path": "src/vanna/integrations/hive/sql_runner.py",
+      "bytes": 2584,
+      "sha256": "b0fb149dcf14cc0f9fed98f239624bea00a7ec4de9738705de137b9bd6670553"
+    },
+    {
+      "path": "src/vanna/integrations/local/__init__.py",
+      "bytes": 408,
+      "sha256": "702563ddec6ce12954e308ddb6b17290cde21c40b42e05f7175e83af45d33cb7"
+    },
+    {
+      "path": "src/vanna/integrations/local/agent_memory/__init__.py",
+      "bytes": 115,
+      "sha256": "084e9f62dc1cff23002083a9e9321a567f32d4d44d77f10d6ee7efe458db6e0e"
+    },
+    {
+      "path": "src/vanna/integrations/local/agent_memory/in_memory.py",
+      "bytes": 10061,
+      "sha256": "409ddb3f151cf86525409414a93daeff9ddcfc4f2c09e2edb29b414b9c821cb6"
+    },
+    {
+      "path": "src/vanna/integrations/local/audit.py",
+      "bytes": 1838,
+      "sha256": "b45d10e260831c6ae778fc2600e863a938acdc6c8b31bc119bfbde15fc6fb9f7"
+    },
+    {
+      "path": "src/vanna/integrations/local/file_system.py",
+      "bytes": 8476,
+      "sha256": "05c25e962a4ad374e2b1de3ac731be760a2e3eeaa52a95233bf62fdae026382d"
+    },
+    {
+      "path": "src/vanna/integrations/local/file_system_conversation_store.py",
+      "bytes": 9133,
+      "sha256": "5a1b3e0ca8f5850edae9bba8643110d46f85efc8689b3bbec6cb52184a2ce681"
+    },
+    {
+      "path": "src/vanna/integrations/local/storage.py",
+      "bytes": 2272,
+      "sha256": "a0ff5abbab17a0ccf1369eda5ed8c323e9eb0216f3ce40e68133695df2245740"
+    },
+    {
+      "path": "src/vanna/integrations/marqo/__init__.py",
+      "bytes": 120,
+      "sha256": "95a31149424af87946ec405013e6dfb85ce36ed72b854390d943db1a36fbd53a"
+    },
+    {
+      "path": "src/vanna/integrations/marqo/agent_memory.py",
+      "bytes": 11276,
+      "sha256": "3b41cc9b693816a2d1d1313fe804cb21ceee29c6afa774b2453e03f188e3f6e2"
+    },
+    {
+      "path": "src/vanna/integrations/milvus/__init__.py",
+      "bytes": 123,
+      "sha256": "aa40ab77d23987371e3961674cf5cd8d445673c4bbf72bebe11c0702652ba2b3"
+    },
+    {
+      "path": "src/vanna/integrations/milvus/agent_memory.py",
+      "bytes": 14975,
+      "sha256": "20d49d90564a4554f4571a04794f249109bb0c9b24364190b343677d2546ec8e"
+    },
+    {
+      "path": "src/vanna/integrations/mock/__init__.py",
+      "bytes": 145,
+      "sha256": "b8056a2d0049cc3217beafd7bfc2f4c0c7fb89e47b4d0ba1ea66e9f6f43d7403"
+    },
+    {
+      "path": "src/vanna/integrations/mock/llm.py",
+      "bytes": 2215,
+      "sha256": "4748f551822f8b1807a589ea1e9786aefd62d8f7e1e4843e16589c36c56b0775"
+    },
+    {
+      "path": "src/vanna/integrations/mssql/__init__.py",
+      "bytes": 114,
+      "sha256": "87cc6a5f04c72c7a23ae15699647224bc282396551f99967808a450bc27d4eea"
+    },
+    {
+      "path": "src/vanna/integrations/mssql/sql_runner.py",
+      "bytes": 2142,
+      "sha256": "a2dd3379eceeb62ebb6323cc6db70b0cca29564d6bd1db6caececfcef2218de5"
+    },
+    {
+      "path": "src/vanna/integrations/mysql/__init__.py",
+      "bytes": 99,
+      "sha256": "65a0634048e94434b684d677f53c4eed6fc8342cadda62040e8b951ef8ab8360"
+    },
+    {
+      "path": "src/vanna/integrations/mysql/sql_runner.py",
+      "bytes": 2534,
+      "sha256": "6873c356ea8d46dd6d86cb246cb95dfcfb216f758c332f8c79cfe8286800e1f7"
+    },
+    {
+      "path": "src/vanna/integrations/ollama/__init__.py",
+      "bytes": 112,
+      "sha256": "a8aee538f0a0f868365619bcbd50e609c538baeece2727bf94d16e50f6097379"
+    },
+    {
+      "path": "src/vanna/integrations/ollama/llm.py",
+      "bytes": 8668,
+      "sha256": "a3c69cea360a4ff821c889e95955a6344cdfc3ad9008b98c8ec99bfe0b8960f3"
+    },
+    {
+      "path": "src/vanna/integrations/openai/__init__.py",
+      "bytes": 225,
+      "sha256": "fd6b36c49afda0690c56ec86c3dda923a9046cf5b245f2e470eb2df7f8566bee"
+    },
+    {
+      "path": "src/vanna/integrations/openai/llm.py",
+      "bytes": 10127,
+      "sha256": "fb47ea6f37c1c9045d4bae2bc6f3aaf0603511d1e9c21b6c43477d379dae0622"
+    },
+    {
+      "path": "src/vanna/integrations/openai/responses.py",
+      "bytes": 6609,
+      "sha256": "6a47e3cc76610e952b3a3b39a03570fa359c5903d0c01f85f7f3861b2242d7c4"
+    },
+    {
+      "path": "src/vanna/integrations/opensearch/__init__.py",
+      "bytes": 135,
+      "sha256": "4700e0c7208360464fcabb2b32dcdd6f8ba75b63de53c3b046da53537380ab63"
+    },
+    {
+      "path": "src/vanna/integrations/opensearch/agent_memory.py",
+      "bytes": 13654,
+      "sha256": "4bcc0b9e9f4651a8539b3c80ad2da3167b1b9e46b0ad015c853a601f26ebc5a6"
+    },
+    {
+      "path": "src/vanna/integrations/oracle/__init__.py",
+      "bytes": 102,
+      "sha256": "5f60a47f056a5afb8032afb966a164ca58af1281f1c3bed9f5a16f326d13ca55"
+    },
+    {
+      "path": "src/vanna/integrations/oracle/sql_runner.py",
+      "bytes": 2272,
+      "sha256": "05c97c1da97035554b5fedab9b506028fb76ea3f2d0e22909f6e4fe4d328f463"
+    },
+    {
+      "path": "src/vanna/integrations/pinecone/__init__.py",
+      "bytes": 129,
+      "sha256": "388996604fe065600703a4310c3df990b91f97ca54f9c12f2cc4c468ce9f6b7f"
+    },
+    {
+      "path": "src/vanna/integrations/pinecone/agent_memory.py",
+      "bytes": 10759,
+      "sha256": "ba700123ccf5bbb9d82fa60ddfb1db1f87b9c8753e9fd4ae6eb139f4df56f63b"
+    },
+    {
+      "path": "src/vanna/integrations/plotly/__init__.py",
+      "bytes": 134,
+      "sha256": "55d085830374c573b4b9b721bcf2caef2e0044acdbb4c1c86de43487e5e721d9"
+    },
+    {
+      "path": "src/vanna/integrations/plotly/chart_generator.py",
+      "bytes": 11289,
+      "sha256": "04e8726f80375bfafccc89365cf7b41762d6dc4d5dca0dd2324057a15552670b"
+    },
+    {
+      "path": "src/vanna/integrations/postgres/__init__.py",
+      "bytes": 158,
+      "sha256": "1882f75a6676a336eac32697c0d52a8063d22ffeeb83255dfd35f102d051dd01"
+    },
+    {
+      "path": "src/vanna/integrations/postgres/sql_runner.py",
+      "bytes": 3926,
+      "sha256": "466fd15da58be32d84728d1a8e1589dd6eeb6a87652b514ff27111f592986b05"
+    },
+    {
+      "path": "src/vanna/integrations/premium/agent_memory/__init__.py",
+      "bytes": 121,
+      "sha256": "0519f72ee9ba6c07d141ca6e4b769e9628224efced58d83210c564597265020e"
+    },
+    {
+      "path": "src/vanna/integrations/premium/agent_memory/premium.py",
+      "bytes": 5840,
+      "sha256": "09b1e6d65791e21f1c828b44adb4cc64566053ce432c8cf062c0ad9ed796388c"
+    },
+    {
+      "path": "src/vanna/integrations/presto/__init__.py",
+      "bytes": 102,
+      "sha256": "380c218acb6ac4ab40b42ee8dd2f6df24a36abbcddfb0a3785c353b0dbcd1848"
+    },
+    {
+      "path": "src/vanna/integrations/presto/sql_runner.py",
+      "bytes": 3556,
+      "sha256": "7c4f953fc716235c743c82f16f4628765046be5d855832f2ee8ff3e8ed0869e5"
+    },
+    {
+      "path": "src/vanna/integrations/qdrant/__init__.py",
+      "bytes": 123,
+      "sha256": "d72fb99270c8dcb1eb9c3afe4827c155821735740a4e0ba66900d9910d07a76f"
+    },
+    {
+      "path": "src/vanna/integrations/qdrant/agent_memory.py",
+      "bytes": 15752,
+      "sha256": "baa4e6ab4bb54459a1f7f4c6d93b5c6f0442a2c656e44deeeaff76c80cf29414"
+    },
+    {
+      "path": "src/vanna/integrations/snowflake/__init__.py",
+      "bytes": 111,
+      "sha256": "ece3e30e5c81fafeb5358780a2cfb1014c23d45faae9ebf04fd0d4c372d4670d"
+    },
+    {
+      "path": "src/vanna/integrations/snowflake/sql_runner.py",
+      "bytes": 5303,
+      "sha256": "a8531692e31f2add290ae4aeb7655570dbc52f1a74ed18554f64131aca7f2fb7"
+    },
+    {
+      "path": "src/vanna/integrations/sqlite/__init__.py",
+      "bytes": 146,
+      "sha256": "d6233e763970c060692e220057eb398d0e5064dc9bac5696fbea443e4a771f86"
+    },
+    {
+      "path": "src/vanna/integrations/sqlite/sql_runner.py",
+      "bytes": 7920,
+      "sha256": "645c5f5c963a6d0a9af9270469bf90863b13123d1ed09047e1b47a0e3e3cb532"
+    },
+    {
+      "path": "src/vanna/integrations/weaviate/__init__.py",
+      "bytes": 129,
+      "sha256": "3a9e68f36f9abef65da72d23b1382b5aff6bec1125dba1b027c505fbcca44f94"
+    },
+    {
+      "path": "src/vanna/integrations/weaviate/agent_memory.py",
+      "bytes": 15027,
+      "sha256": "f3630ce59f18f0c91489b662e9d1fab485f81843bf214fd922de0fbe9a404d02"
+    },
+    {
+      "path": "src/vanna/legacy/__init__.py",
+      "bytes": 9256,
+      "sha256": "168a3798bee438a21635f2b4e926dfd7272b10a93b5e4f32f3758e2ba386f679"
+    },
+    {
+      "path": "src/vanna/legacy/adapter.py",
+      "bytes": 17024,
+      "sha256": "e79f07823f8c3dbb7110dc1272a3d4b66be403e63dd2382670cb2ce93d700101"
+    },
+    {
+      "path": "src/vanna/legacy/advanced/__init__.py",
+      "bytes": 672,
+      "sha256": "dea7bb4b517dd7c9a8820a723af3e1cbcf241fbae3696355c75a3dc28215b097"
+    },
+    {
+      "path": "src/vanna/legacy/anthropic/__init__.py",
+      "bytes": 43,
+      "sha256": "f39b3fda6032c8fc5cd13ff4244bd8780904296270930aa8c94c120b9770f469"
+    },
+    {
+      "path": "src/vanna/legacy/anthropic/anthropic_chat.py",
+      "bytes": 2661,
+      "sha256": "84edc8b74a7019eb782e942f49d2550768d9464f23d849f2c41792ede449f2b6"
+    },
+    {
+      "path": "src/vanna/legacy/azuresearch/__init__.py",
+      "bytes": 58,
+      "sha256": "b597efb2b08911288bdc49f10383eb39ce4da0ef0c5c4cc27c75ff8678fc9fe7"
+    },
+    {
+      "path": "src/vanna/legacy/azuresearch/azuresearch_vector.py",
+      "bytes": 10128,
+      "sha256": "0199cfc3dbda2d06d084d0d181b10a7b1c6853d43f020a83714583c6bb848244"
+    },
+    {
+      "path": "src/vanna/legacy/base/__init__.py",
+      "bytes": 28,
+      "sha256": "4a5f87335451633019a12aa62f5099426177645f9bc984c21503f7259d80e4c5"
+    },
+    {
+      "path": "src/vanna/legacy/base/base.py",
+      "bytes": 74806,
+      "sha256": "b36e3e9a8b8213a322ef957d6c770d073a65c40cf68074966c7d7a0fcb3bfe82"
+    },
+    {
+      "path": "src/vanna/legacy/bedrock/__init__.py",
+      "bytes": 47,
+      "sha256": "d5be2dfec84a1793757cad6f1ddf8e81ceda229f46d1320e1ee303c6e746255c"
+    },
+    {
+      "path": "src/vanna/legacy/bedrock/bedrock_converse.py",
+      "bytes": 2842,
+      "sha256": "81f10e7cc4f592f61f72f5de5bc52498d01dfe03cfeebb4d3565fd3e983a041a"
+    },
+    {
+      "path": "src/vanna/legacy/chromadb/__init__.py",
+      "bytes": 50,
+      "sha256": "fa22f49d6fe0e2e33c9d628cb969cd78f7cde276fdba4f0fdd6cc6bdeccea918"
+    },
+    {
+      "path": "src/vanna/legacy/chromadb/chromadb_vector.py",
+      "bytes": 8814,
+      "sha256": "6454db3f76163a75a114b8905e5701d840c9fad01592fd8580a855fb2a47cc59"
+    },
+    {
+      "path": "src/vanna/legacy/cohere/__init__.py",
+      "bytes": 86,
+      "sha256": "ba572aefe966a1bd868bc382a2aad9b64cf1a42e8b4394b302d9515004e0ceba"
+    },
+    {
+      "path": "src/vanna/legacy/cohere/cohere_chat.py",
+      "bytes": 3533,
+      "sha256": "0d1ad9ba7654fa1d0c4747dc54989501db287f44c77c43309e6cfa9297b601a4"
+    },
+    {
+      "path": "src/vanna/legacy/cohere/cohere_embeddings.py",
+      "bytes": 2608,
+      "sha256": "0859429a8d5fd6177dd0140799fa7dc7286133d11520b66629912d2c9bd8a7f4"
+    },
+    {
+      "path": "src/vanna/legacy/deepseek/__init__.py",
+      "bytes": 40,
+      "sha256": "ed2558dc318970d1fb19393b52af76d9033cc992aedfee483b7dd643ff9b8023"
+    },
+    {
+      "path": "src/vanna/legacy/deepseek/deepseek_chat.py",
+      "bytes": 1841,
+      "sha256": "29dcb10e72c15663a686d1ed0a3523581923c7f8ac3916f4f1019c51df3eb696"
+    },
+    {
+      "path": "src/vanna/legacy/exceptions/__init__.py",
+      "bytes": 685,
+      "sha256": "749eb9c71c5987596a05e83a9f3e93abfaf7e232d59a3bc1bcf3bd43a845690f"
+    },
+    {
+      "path": "src/vanna/legacy/faiss/__init__.py",
+      "bytes": 25,
+      "sha256": "097f5c0c5c078ee4124a58af54af9895f43d8d04513abbff3295aa40a15fee1b"
+    },
+    {
+      "path": "src/vanna/legacy/faiss/faiss.py",
+      "bytes": 8938,
+      "sha256": "fefd1e0e09ec39cb3faa0410254e3819c8dc0b1a3003febc3187f9c8966084c6"
+    },
+    {
+      "path": "src/vanna/legacy/flask/__init__.py",
+      "bytes": 44664,
+      "sha256": "5d1e89a4243fe4e597000da8a2a1df2b0ea176ec6d3b92886f21c14cad8113ce"
+    },
+    {
+      "path": "src/vanna/legacy/flask/assets.py",
+      "bytes": 453463,
+      "sha256": "e51b98f3b30d11e38e9df48ef77b6893867f5c69704c90a65c011f11c645ccc7"
+    },
+    {
+      "path": "src/vanna/legacy/flask/auth.py",
+      "bytes": 1247,
+      "sha256": "a4826ee290fa13f3f8ef018a4d188f757ac04eb412991f989c44f9853d99f926"
+    },
+    {
+      "path": "src/vanna/legacy/google/__init__.py",
+      "bytes": 92,
+      "sha256": "e83f2b0c18ca2499bf8e9567f5be15736351f91efbf5e77f6e71e15a6c422571"
+    },
+    {
+      "path": "src/vanna/legacy/google/bigquery_vector.py",
+      "bytes": 9784,
+      "sha256": "1e31d261db430822362237a4b93aa92a106d2ca63d1e5dff6d63d0a5bb1a00b6"
+    },
+    {
+      "path": "src/vanna/legacy/google/gemini_chat.py",
+      "bytes": 2751,
+      "sha256": "8dcc4af5751b386e235f7aa21594b4bb62feddf9ad6e44292cd12120b02da5a7"
+    },
+    {
+      "path": "src/vanna/legacy/hf/__init__.py",
+      "bytes": 19,
+      "sha256": "bc3d1b2217cb900d54b2f552178300cf70daf1a42e9e4428df0943ced98cba3d"
+    },
+    {
+      "path": "src/vanna/legacy/hf/hf.py",
+      "bytes": 3019,
+      "sha256": "dbcc11b59e7b0e617949c7b10571388876e72914cb1e2661c08b3bfac333873c"
+    },
+    {
+      "path": "src/vanna/legacy/local.py",
+      "bytes": 313,
+      "sha256": "539b3cc9b0914210548b38bc23af68de3a8ea537aeffa286618e833306718c6e"
+    },
+    {
+      "path": "src/vanna/legacy/marqo/__init__.py",
+      "bytes": 37,
+      "sha256": "19a016b49d01f87e6b4d8eb4ee22c20ab2c3ed3d33318339a9622898407d80b9"
+    },
+    {
+      "path": "src/vanna/legacy/marqo/marqo.py",
+      "bytes": 5242,
+      "sha256": "5bb593b735a9e11263655cba39a5c7aa77140483dd23843ba87ec1442c59d7f0"
+    },
+    {
+      "path": "src/vanna/legacy/milvus/__init__.py",
+      "bytes": 46,
+      "sha256": "5416ac246d9e4ca6c923a0846a777b90f2cd06ba98ae7d10080852615cfcd78b"
+    },
+    {
+      "path": "src/vanna/legacy/milvus/milvus_vector.py",
+      "bytes": 11642,
+      "sha256": "593364ec7d6f467316fd34dfcd52afcd2b966f04eb94cbde9cdc8d9abc123192"
+    },
+    {
+      "path": "src/vanna/legacy/mistral/__init__.py",
+      "bytes": 29,
+      "sha256": "ef4ad363eebd6767a1924323f3874d302ba43e8e8059d7e5046bc807fa73b52d"
+    },
+    {
+      "path": "src/vanna/legacy/mistral/mistral.py",
+      "bytes": 1494,
+      "sha256": "adc7609944909e22e46a1d952f6dd519845af565e93b2fdd64de12d2473ffd5f"
+    },
+    {
+      "path": "src/vanna/legacy/mock/__init__.py",
+      "bytes": 97,
+      "sha256": "9d847659f715e4d770a4add5eb84063961c119cdc448df6e57af092d2efa691c"
+    },
+    {
+      "path": "src/vanna/legacy/mock/embedding.py",
+      "bytes": 250,
+      "sha256": "8209cfecab8f87a765a9e505b6837cb742743fbff244db67f6b22aea1f20f3ec"
+    },
+    {
+      "path": "src/vanna/legacy/mock/llm.py",
+      "bytes": 517,
+      "sha256": "19a2a4a6de8635d5c8f432bdcd4853811566a39d7068314ab7e65a04c61fdaeb"
+    },
+    {
+      "path": "src/vanna/legacy/mock/vectordb.py",
+      "bytes": 3223,
+      "sha256": "457911af7eeaba1f762fbf72f5a0b1a2e6373c1ee04fd659a05d73733a9e3bad"
+    },
+    {
+      "path": "src/vanna/legacy/ollama/__init__.py",
+      "bytes": 27,
+      "sha256": "e31caef1a1cf7671078396be400330af9a349ece707afb29ff3908fa774c3b69"
+    },
+    {
+      "path": "src/vanna/legacy/ollama/ollama.py",
+      "bytes": 4122,
+      "sha256": "4ba4b664107f34139888fb947581682110e1f1d942127bde5c86fdeb3964374f"
+    },
+    {
+      "path": "src/vanna/legacy/openai/__init__.py",
+      "bytes": 86,
+      "sha256": "b4691e43bc1320fb1a9dda3b421a121de86da1055d60bc056ca3654a60a635e4"
+    },
+    {
+      "path": "src/vanna/legacy/openai/openai_chat.py",
+      "bytes": 4367,
+      "sha256": "63e7a916ff0a44b062d9a547b2c50c6a28781467a0efe5199dbc98ee4d068b48"
+    },
+    {
+      "path": "src/vanna/legacy/openai/openai_embeddings.py",
+      "bytes": 1260,
+      "sha256": "838a4d87d2d57183fdc0ea0ef1e71a71c0c55a609460c22779b7c7b9c01ad867"
+    },
+    {
+      "path": "src/vanna/legacy/opensearch/__init__.py",
+      "bytes": 126,
+      "sha256": "75cf5f36d22b38ea64486a7f24a3a118e936e9f7f22ba5b56e6fc2767f57d3d2"
+    },
+    {
+      "path": "src/vanna/legacy/opensearch/opensearch_vector.py",
+      "bytes": 13465,
+      "sha256": "d017946eb7fcd16e7016035ac144807d880667c7d83f4620fe7b30246abbca14"
+    },
+    {
+      "path": "src/vanna/legacy/opensearch/opensearch_vector_semantic.py",
+      "bytes": 7516,
+      "sha256": "ad379d8eaa230ca2ab9849467806e06c2e471add269402de5c6d5816d8385b8c"
+    },
+    {
+      "path": "src/vanna/legacy/oracle/__init__.py",
+      "bytes": 46,
+      "sha256": "944f4807d9cae30b0043429d02aa2274ca0b1fcd1006c0751d16c8d0640987c7"
+    },
+    {
+      "path": "src/vanna/legacy/oracle/oracle_vector.py",
+      "bytes": 17533,
+      "sha256": "9daf39833a3582a1d9ecbfefa247feef3a967a955fb1f0b720a9f9ecb859f8f2"
+    },
+    {
+      "path": "src/vanna/legacy/pgvector/__init__.py",
+      "bytes": 37,
+      "sha256": "ed6beef6a70d74dbd9bb6e839f9de384ef585c42e6d3f62caf005a6f805d8153"
+    },
+    {
+      "path": "src/vanna/legacy/pgvector/pgvector.py",
+      "bytes": 10398,
+      "sha256": "afe6e647cedd35cebcafead0bef776d8b78e3de998588b9a51ab907fb32a252b"
+    },
+    {
+      "path": "src/vanna/legacy/pinecone/__init__.py",
+      "bytes": 90,
+      "sha256": "78ee65f1a5fcbca2fa68850c8005c63edd6376a2b107f1e273a726a15014ac3d"
+    },
+    {
+      "path": "src/vanna/legacy/pinecone/pinecone_vector.py",
+      "bytes": 11445,
+      "sha256": "0d627a51215219f7054160b85fdbe225d76d6a1014703998abc8ebcdeb41d551"
+    },
+    {
+      "path": "src/vanna/legacy/qdrant/__init__.py",
+      "bytes": 73,
+      "sha256": "3d7fceb033a23ccbf0089da218447576b49d43d03233c88de4f1018516faaaa6"
+    },
+    {
+      "path": "src/vanna/legacy/qdrant/qdrant.py",
+      "bytes": 12483,
+      "sha256": "6c49e3b7e90bdfa9ee21c5edb7669d378aa9888ebb55e275af46a90e42e202cc"
+    },
+    {
+      "path": "src/vanna/legacy/qianfan/__init__.py",
+      "bytes": 90,
+      "sha256": "429478dc18d941972b703464c98718892fa4caab589aedb70070f32b45b2d43d"
+    },
+    {
+      "path": "src/vanna/legacy/qianfan/Qianfan_Chat.py",
+      "bytes": 6099,
+      "sha256": "96ecf571e610063d52c64aa6a6626a56821e2704c4bbe9677ab1474907c3f3ac"
+    },
+    {
+      "path": "src/vanna/legacy/qianfan/Qianfan_embeddings.py",
+      "bytes": 1078,
+      "sha256": "e839ce1876c05218dd1e57177a3576bfacda4c6f7fa7437e02e8423ca8f91153"
+    },
+    {
+      "path": "src/vanna/legacy/qianwen/__init__.py",
+      "bytes": 98,
+      "sha256": "7c1978cd04e9bce6c644d255e8454d8c8510f5a2830d8abeccb3ec119ad1a708"
+    },
+    {
+      "path": "src/vanna/legacy/qianwen/QianwenAI_chat.py",
+      "bytes": 4673,
+      "sha256": "94e0bb5fb500ce3a3461eb8aa1b771170c3e842cc3a74e646a4efab38cea64b6"
+    },
+    {
+      "path": "src/vanna/legacy/qianwen/QianwenAI_embeddings.py",
+      "bytes": 1253,
+      "sha256": "e797302a907f377395817902f2e48640268800af2fa23cf652794036d897592f"
+    },
+    {
+      "path": "src/vanna/legacy/remote.py",
+      "bytes": 1948,
+      "sha256": "1a007f91cb2f514c2450d31680ec90e1f8906e46fff0f269f47086a744a129c7"
+    },
+    {
+      "path": "src/vanna/legacy/types/__init__.py",
+      "bytes": 4957,
+      "sha256": "4219ff62c70ab4987b9853c2c820cb6b62bc6b83912cc1959cfa536eff6e0765"
+    },
+    {
+      "path": "src/vanna/legacy/utils.py",
+      "bytes": 2202,
+      "sha256": "bf22a4533f248e3220d0a5d9b9ace92f8fbf22a1ed370fa730971dcd7dabb6aa"
+    },
+    {
+      "path": "src/vanna/legacy/vannadb/__init__.py",
+      "bytes": 48,
+      "sha256": "0ba5246287263ba766cdf3ca65a5a88cdd26239625659f5521b75caae044e7c0"
+    },
+    {
+      "path": "src/vanna/legacy/vannadb/vannadb_vector.py",
+      "bytes": 15047,
+      "sha256": "7e393133a29af8d939345e81ad181dcb0b68d9dd26425ebbb7a6015044d8d4de"
+    },
+    {
+      "path": "src/vanna/legacy/vllm/__init__.py",
+      "bytes": 23,
+      "sha256": "68d954905f6d6d445d797009f32b6e69a175818c1c1b79f2d4c7cd97f7304188"
+    },
+    {
+      "path": "src/vanna/legacy/vllm/vllm.py",
+      "bytes": 3083,
+      "sha256": "409a7c296ad65dfadec51b8b3185ee387a8fde74dda784c9199910e9d3e0c1f1"
+    },
+    {
+      "path": "src/vanna/legacy/weaviate/__init__.py",
+      "bytes": 46,
+      "sha256": "1cbe8f025ede3c1024786f2e967f8198cec852d5a88724cfbc37dc3f34864828"
+    },
+    {
+      "path": "src/vanna/legacy/weaviate/weaviate_vector.py",
+      "bytes": 7861,
+      "sha256": "d288ddcdeb5f867143be0b2939b6685af472a21121a984b8ae84f32cb4449c3f"
+    },
+    {
+      "path": "src/vanna/legacy/xinference/__init__.py",
+      "bytes": 35,
+      "sha256": "1055bfb33f81481d978268c008e4d99a779e224dc8d8489682e7be5552699c1d"
+    },
+    {
+      "path": "src/vanna/legacy/xinference/xinference.py",
+      "bytes": 1880,
+      "sha256": "f078dd754a1b01240258b1c1dfcd10e29eb92d8c2933204bf5bf48e4f04499e7"
+    },
+    {
+      "path": "src/vanna/legacy/ZhipuAI/__init__.py",
+      "bytes": 116,
+      "sha256": "365b228ed719a794e3f6390e7bd7cd70e40d0ff42c1a0bbba2d383b022c13ebd"
+    },
+    {
+      "path": "src/vanna/legacy/ZhipuAI/ZhipuAI_Chat.py",
+      "bytes": 8725,
+      "sha256": "5ad64a50123094d1f40466dbe2565b551ee94d622b9fb6f844b224fbbbb44ae4"
+    },
+    {
+      "path": "src/vanna/legacy/ZhipuAI/ZhipuAI_embeddings.py",
+      "bytes": 2790,
+      "sha256": "22ba67a3decb8c4250d44d866fbd6d215845b8775cf6ac524c0895a4ca52afce"
+    },
+    {
+      "path": "src/vanna/py.typed",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vanna/servers/__init__.py",
+      "bytes": 412,
+      "sha256": "d3460fc69144d24dff4650e61f6f08846221e70b6567b10c50541072d2dd9c03"
+    },
+    {
+      "path": "src/vanna/servers/__main__.py",
+      "bytes": 130,
+      "sha256": "d59cd937830a18536feb32cb14ab7b06c87f186d67f2a72fc69f2c7a5e5ebada"
+    },
+    {
+      "path": "src/vanna/servers/base/__init__.py",
+      "bytes": 407,
+      "sha256": "85f2d47696d04afa61d01cd9a6d44a47198e27f1c7330b3fc7b3dbddde084e69"
+    },
+    {
+      "path": "src/vanna/servers/base/chat_handler.py",
+      "bytes": 1777,
+      "sha256": "47093807725e746e57647329eb6b0c557a9a5f71fa6766f44687d245b550fd41"
+    },
+    {
+      "path": "src/vanna/servers/base/models.py",
+      "bytes": 3767,
+      "sha256": "eb1dfbd8f4eb7e62d398e3f6570ede578587007302e956deb45b852671b2ce63"
+    },
+    {
+      "path": "src/vanna/servers/base/rich_chat_handler.py",
+      "bytes": 5491,
+      "sha256": "3bdae1ade30d7808fabe14f9dfaffb53671a1c29896122ef33a99c2840a6b96c"
+    },
+    {
+      "path": "src/vanna/servers/base/templates.py",
+      "bytes": 14418,
+      "sha256": "e3299c47b1cfbb5525ef6e03b2c272c3d5ef430d0a09226a1afbd370598c78b9"
+    },
+    {
+      "path": "src/vanna/servers/cli/__init__.py",
+      "bytes": 130,
+      "sha256": "7026747a62eda497b5f99eac0bfd09620a59477d6b24d9ed18042e85a738e7b9"
+    },
+    {
+      "path": "src/vanna/servers/cli/server_runner.py",
+      "bytes": 7010,
+      "sha256": "a08a6358cfe7f51ac1148209507e81f0a50846d88609cf2a0de375ded2cb8481"
+    },
+    {
+      "path": "src/vanna/servers/fastapi/__init__.py",
+      "bytes": 127,
+      "sha256": "7f6d0ffe580780e2f41365b1ec4e1a1597dff7f4ac2455c001b7477ffc64e4d7"
+    },
+    {
+      "path": "src/vanna/servers/fastapi/app.py",
+      "bytes": 5518,
+      "sha256": "3676f5d6d327f7cf7ece5ba2478e4db2d509594dd1ceb96bf7f66f54573f3cf0"
+    },
+    {
+      "path": "src/vanna/servers/fastapi/routes.py",
+      "bytes": 6907,
+      "sha256": "3eef8110b71047937b21b5511c6c40c35c23ce65f182dff3c04ad0c337eab78f"
+    },
+    {
+      "path": "src/vanna/servers/flask/__init__.py",
+      "bytes": 121,
+      "sha256": "f6456a5bf3f4a10bbee325642a2b49ade5c167a51c2584f17a3f08575a19b335"
+    },
+    {
+      "path": "src/vanna/servers/flask/app.py",
+      "bytes": 4118,
+      "sha256": "ad2155b5745d938ef5ddd01cbcbba0f46e852253c09dff0b8ad6b87d24a32bb0"
+    },
+    {
+      "path": "src/vanna/servers/flask/routes.py",
+      "bytes": 4763,
+      "sha256": "a7a7a148242814bb1750e777ca73cab61d1312a64fa6fc5a6d003e05306ba79c"
+    },
+    {
+      "path": "src/vanna/tools/__init__.py",
+      "bytes": 865,
+      "sha256": "1c3100582e8db31ebde6a9f0205bade28f2ec10a62887303bdc3ff01d9c9565e"
+    },
+    {
+      "path": "src/vanna/tools/agent_memory.py",
+      "bytes": 12243,
+      "sha256": "488b82ac474e53b6ee1629424d7ecbf3f4166789805acb6c2a9eecfc3961ad80"
+    },
+    {
+      "path": "src/vanna/tools/file_system.py",
+      "bytes": 29840,
+      "sha256": "c10a725d45008d5ee57136124735efaab5e6605e8c15f1941f88bbd80034b2e3"
+    },
+    {
+      "path": "src/vanna/tools/python.py",
+      "bytes": 6582,
+      "sha256": "84f3047af30ce023ed2c63adbad80c9ba8ddb2c2b57fc2eade4fc3b6fc524330"
+    },
+    {
+      "path": "src/vanna/tools/run_sql.py",
+      "bytes": 6951,
+      "sha256": "446a6d4ff7117c3e853fedcc9d34bfa6061a85625b0d26f782fdf267ee6c4778"
+    },
+    {
+      "path": "src/vanna/tools/visualize_data.py",
+      "bytes": 7551,
+      "sha256": "aa03cc4f110099bb498dbda3faab401b5670b73bc1bddf20764cc63248bf6061"
+    },
+    {
+      "path": "src/vanna/utils/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vanna/web_components/__init__.py",
+      "bytes": 1040,
+      "sha256": "40bcc4254ddeaec965bf8a6066968a770b374b7bb9bc3c93c948af6b031ce00d"
+    },
+    {
+      "path": "tests/conftest.py",
+      "bytes": 3036,
+      "sha256": "e1d33970df215dfb9f3706125c1a934a590b6c751704a2057b7c9ba7dff6a06e"
+    },
+    {
+      "path": "tests/test_agent_memory.py",
+      "bytes": 15252,
+      "sha256": "6d91a20c12a479db06db54fe62bec6bad944c26001bd117006248c8a2ecc3892"
+    },
+    {
+      "path": "tests/test_agent_memory_sanity.py",
+      "bytes": 25180,
+      "sha256": "15e2486d547884dbcd76a222a9b6dae52af0522ffd12a923fbd5fb8cf2b446f0"
+    },
+    {
+      "path": "tests/test_agents.py",
+      "bytes": 6667,
+      "sha256": "27c610c5a43b66ede2f21deb65a17b39e931f8351f657d6dffd4401636bca6b0"
+    },
+    {
+      "path": "tests/test_azureopenai_llm.py",
+      "bytes": 11388,
+      "sha256": "4e2c37d371ef042564aa9a5b96e1ec6660f5e776dadd0f88d3cbce93f3aa58b0"
+    },
+    {
+      "path": "tests/test_chromadb_persistence_fix.py",
+      "bytes": 6187,
+      "sha256": "26efaedfab1da1ed7fb5fb4559bc1f07e95cabb8748802aaed91fbffb6c35494"
+    },
+    {
+      "path": "tests/test_database_sanity.py",
+      "bytes": 28169,
+      "sha256": "e1afea94c464d0dcc33943086cca652709e8cb5d17e8abe0d5499ae257b0e1ee"
+    },
+    {
+      "path": "tests/test_gemini_integration.py",
+      "bytes": 5603,
+      "sha256": "b60a54267782aa26fc45ce994804efacbc3a5c773365aa8acb5536f0f135ca5f"
+    },
+    {
+      "path": "tests/test_legacy_adapter.py",
+      "bytes": 6227,
+      "sha256": "66474dff2e7acab08d306ba0ecd6a55e3003d524b1d6dbf8c88b8c7c51ae1529"
+    },
+    {
+      "path": "tests/test_llm_context_enhancer.py",
+      "bytes": 13546,
+      "sha256": "2e0f477baea1f35bfe7f6e08d5dbe218a2df58680f6b0945380ceca01672e060"
+    },
+    {
+      "path": "tests/test_memory_tools.py",
+      "bytes": 10359,
+      "sha256": "b6f84a566769a7194f663a194a9ac0b21d6665d4c4fb768d1767496625c62c5a"
+    },
+    {
+      "path": "tests/test_ollama_direct.py",
+      "bytes": 9552,
+      "sha256": "050a2ca201afdc9f499354f3dfe5ff18ee02ca88d4a3249f23ca5f15235b2e32"
+    },
+    {
+      "path": "tests/test_sqlite_runner_maintenance.py",
+      "bytes": 13449,
+      "sha256": "17f05a0ed067ab5a4a8e33e472f5c9e71fc4e8510c72ad5c946345abdab951f0"
+    },
+    {
+      "path": "tests/test_tool_permissions.py",
+      "bytes": 29205,
+      "sha256": "c8f097331ab927a09e63d82b467fe52d2bae5b8c66de5087ba57992862297bcc"
+    },
+    {
+      "path": "tests/test_workflow.py",
+      "bytes": 30729,
+      "sha256": "a969cc05848cdc01593bf582182e06df51daa4c4ad9c00df17990344511bba7e"
+    },
+    {
+      "path": "tools/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tools/baseline_loader.py",
+      "bytes": 1655,
+      "sha256": "98cd515283577bc979c940bf02901dcf351cbb051d523cbe4eebbaad34ebfcd2"
+    },
+    {
+      "path": "tools/demo_g1.py",
+      "bytes": 12581,
+      "sha256": "a7e6199912a0612f65a9c419f03f2750934666b3d8c4a2d721e37c5f62564c1e"
+    },
+    {
+      "path": "tools/make_manifest.py",
+      "bytes": 3417,
+      "sha256": "831a3eac6ca82d985f0ca09a4ee0d1930981e37e47f0e7745258ef451ef0747c"
+    },
+    {
+      "path": "tools/probe_cases.py",
+      "bytes": 20297,
+      "sha256": "67203c0176b0e339f25c47105b2e85f9995b7926f2b66f291df8acca1fea3ef4"
+    },
+    {
+      "path": "tools/reproduce_g1.py",
+      "bytes": 12342,
+      "sha256": "4daf1a7fdfe34abcf02757ea6ddcd7a0dcf183efbccb3a5ac455508d6a551c83"
+    },
+    {
+      "path": "tox.ini",
+      "bytes": 7537,
+      "sha256": "31e6f173c0a89622bf6c03f61e75c50659d901a8f6dd003ba7eac35c88128e6a"
+    },
+    {
+      "path": "UPSTREAM.md",
+      "bytes": 3420,
+      "sha256": "c4ee5ba71c57197e820b2b9be63df0c8251a7bcc288c349be25b217d06d18ccf"
+    }
+  ]
+}
